@@ -1,0 +1,29 @@
+{
+  "entity_sounds": {
+    "entities": {
+      "iron_golem": {
+        "volume": 1,
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "events": {
+          "ambient": "mob.irongolem.say",
+          "hurt": "mob.irongolem.hit",
+          "death": "mob.irongolem.death",
+		  "eat": "mob.irongolem.repair",
+          "step": {
+            "sound": "mob.irongolem.walk",
+            "volume": 1,
+            "pitch": 1
+          },
+          "throw": {
+            "sound": "mob.irongolem.throw",
+            "volume": 1,
+            "pitch": 1
+          }
+        }
+      }
+    }
+  }
+}

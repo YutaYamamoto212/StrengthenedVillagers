@@ -1,0 +1,3103 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minecraft:wandering_trader",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "managed": {
+        "minecraft:managed_wandering_trader": {}
+      },
+      "despawning": {
+        "minecraft:type_family": {
+          "family": [
+            "wandering_trader",
+            "wandering_trader_despawning",
+            "mob"
+          ]
+        }
+      },
+      "minecraft:scared": {
+        "minecraft:angry": {
+          "duration": 5,
+          "broadcastAnger": true,
+          "broadcastRange": 10,
+          "broadcast_targets": [
+            "llama",
+			"trader_llama"
+          ],
+          "broadcast_filters": {
+            "test": "is_leashed_to",
+            "subject": "other",
+            "value": true
+          },
+          "calm_event": {
+            "event": "minecraft:become_calm",
+            "target": "self"
+          }
+        }
+      },
+      "unstrengthened": {
+        "minecraft:type_family": {
+          "family": [
+            "wandering_trader",
+            "mob",
+            "unstrengthened"
+          ]
+        },
+        "minecraft:timer": {
+          "looping": false,
+          "random_time_choices": [
+            {
+              "weight": 50,
+              "value": 2400
+            },
+            {
+              "weight": 50,
+              "value": 3600
+            }
+          ],
+          "time_down_event": {
+            "event": "minecraft:start_despawn",
+            "target": "self"
+          }
+        },
+        "minecraft:despawn": {
+          "remove_child_entities": true,
+          "filters": {
+            "all_of": [
+              {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "self",
+                    "value": "wandering_trader_despawning"
+                  },
+                  {
+                    "test": "has_trade_supply",
+                    "subject": "self",
+                    "value": false
+                  }
+                ]
+              },
+              {
+                "test": "distance_to_nearest_player",
+                "operator": ">",
+                "value": 24
+              }
+            ]
+          }
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "entity_attack",
+              "deals_damage": true,
+              "on_damage": {
+                "event": "minecraft:become_scared"
+              }
+            },
+            {
+              "cause": "projectile",
+              "deals_damage": true,
+              "on_damage": {
+                "event": "minecraft:become_scared"
+              }
+            },
+            {
+              "cause": "magic",
+              "deals_damage": true,
+              "on_damage": {
+                "event": "minecraft:become_scared"
+              }
+            },
+            {
+              "on_damage": {
+                "filters": {
+                  "any_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "villager"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "wandering_trader"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "irongolem"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "trader_llama"
+                    }
+                  ]
+                }
+              },
+              "deals_damage": false
+            }
+          ]
+        },
+        "minecraft:behavior.panic": {
+          "priority": 1,
+          "speed_multiplier": 0.6
+        },
+        "minecraft:behavior.avoid_mob_type": {
+          "priority": 2,
+          "entity_types": [
+            {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "zombie"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "zombie_villager"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "zombie_pigman"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "illager"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "vex"
+                  }
+                ]
+              },
+              "walk_speed_multiplier": 0.6,
+              "sprint_speed_multiplier": 0.6
+            }
+          ],
+          "max_dist": 6
+        },
+        "minecraft:behavior.drink_potion": {
+          "priority": 1,
+          "speed_modifier": -0.2,
+          "potions": [
+            {
+              "id": 7,
+              "chance": 1,
+              "filters": {
+                "all_of": [
+                  {
+                    "any_of": [
+                      {
+                        "test": "hourly_clock_time",
+                        "operator": ">=",
+                        "value": 18000
+                      },
+                      {
+                        "test": "hourly_clock_time",
+                        "operator": "<",
+                        "value": 12000
+                      }
+                    ]
+                  },
+                  {
+                    "test": "is_visible",
+                    "subject": "self",
+                    "value": true
+                  },
+                  {
+                    "any_of": [
+                      {
+                        "test": "is_avoiding_mobs",
+                        "subject": "self",
+                        "value": true
+                      },
+                      {
+                        "all_of": [
+                          {
+                            "test": "has_component",
+                            "subject": "self",
+                            "value": "minecraft:angry"
+                          },
+                          {
+                            "test": "is_family",
+                            "subject": "target",
+                            "operator": "!=",
+                            "value": "player"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": 8,
+              "chance": 1,
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "hourly_clock_time",
+                    "operator": ">=",
+                    "value": 12000
+                  },
+                  {
+                    "test": "hourly_clock_time",
+                    "operator": "<",
+                    "value": 18000
+                  },
+                  {
+                    "test": "is_visible",
+                    "subject": "self",
+                    "value": true
+                  },
+                  {
+                    "any_of": [
+                      {
+                        "test": "is_avoiding_mobs",
+                        "subject": "self",
+                        "value": true
+                      },
+                      {
+                        "test": "has_component",
+                        "subject": "self",
+                        "value": "minecraft:angry"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "diamond_axe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "diamond_axe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "diamond_hoe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "diamond_hoe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "diamond_pickaxe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "diamond_pickaxe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "diamond_shovel"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "diamond_shovel"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "diamond_sword"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "diamond_sword"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "golden_axe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "golden_axe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "golden_hoe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "golden_hoe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "golden_pickaxe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "golden_pickaxe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "golden_shovel"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "golden_shovel"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "golden_sword"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "golden_sword"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "iron_axe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "iron_axe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "iron_hoe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "iron_hoe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "iron_pickaxe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "iron_pickaxe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "iron_shovel"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "iron_shovel"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "iron_sword"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "iron_sword"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "netherite_axe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "netherite_axe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "netherite_hoe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "netherite_hoe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "netherite_pickaxe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "netherite_pickaxe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "netherite_shovel"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "netherite_shovel"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "netherite_sword"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "netherite_sword"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "stone_axe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "stone_axe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "stone_hoe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "stone_hoe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "stone_pickaxe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "stone_pickaxe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "stone_shovel"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "stone_shovel"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "stone_sword"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "stone_sword"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "wooden_axe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "wooden_axe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "wooden_hoe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "wooden_hoe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "wooden_pickaxe"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "wooden_pickaxe"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "wooden_shovel"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "wooden_shovel"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "wooden_sword"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "player"
+                    },
+                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                  ]
+                },
+                "event": "wooden_sword"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.strengthen"
+            }
+          ]
+        }
+      },
+      "strengthened_on_spawn": {
+        "minecraft:type_family": {
+          "family": [
+            "wandering_trader",
+            "mob",
+            "strengthened"
+          ]
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "within_radius": 16,
+          "reselect_targets": true,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "monster"
+              },
+              "max_dist": 16
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "hoglin"
+                  },
+                  {
+                    "test": "is_difficulty",
+                    "operator": "!=",
+                    "value": "peaceful"
+                  }
+                ]
+              },
+              "max_dist": 16
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "zoglin"
+                  },
+                  {
+                    "test": "is_difficulty",
+                    "operator": "!=",
+                    "value": "peaceful"
+                  }
+                ]
+              },
+              "max_dist": 16
+            }
+          ],
+          "must_see": true
+        },
+        "minecraft:behavior.hurt_by_target": {
+          "priority": 1,
+          "entity_types": {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "villager"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "irongolem"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "wandering_trader"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "trader_llama"
+                }
+              ]
+            },
+            "max_dist": 16
+          }
+        },
+        "minecraft:behavior.avoid_mob_type": {
+          "priority": 1,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "creeper"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "other",
+                    "value": "minecraft:explode"
+                  }
+                ]
+              },
+              "max_dist": 8,
+              "walk_speed_multiplier": 0.875,
+              "sprint_speed_multiplier": 0.875
+            }
+          ]
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "on_damage": {
+                "filters": {
+                  "any_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "villager"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "wandering_trader"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "irongolem"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "trader_llama"
+                    }
+                  ]
+                }
+              },
+              "deals_damage": false
+            }
+          ]
+        },
+        "minecraft:on_target_acquired": {
+          "event": "minecraft:start_attacking",
+          "target": "self"
+        },
+        "minecraft:on_target_escape": {
+          "event": "minecraft:stop_attacking",
+          "target": "self"
+        }
+      },
+      "strengthened_by_player": {
+        "minecraft:type_family": {
+          "family": [
+            "wandering_trader",
+            "mob",
+            "strengthened"
+          ]
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "within_radius": 16,
+          "reselect_targets": true,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "monster"
+              },
+              "max_dist": 16
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "hoglin"
+                  },
+                  {
+                    "test": "is_difficulty",
+                    "operator": "!=",
+                    "value": "peaceful"
+                  }
+                ]
+              },
+              "max_dist": 16
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "zoglin"
+                  },
+                  {
+                    "test": "is_difficulty",
+                    "operator": "!=",
+                    "value": "peaceful"
+                  }
+                ]
+              },
+              "max_dist": 16
+            }
+          ],
+          "must_see": true
+        },
+        "minecraft:behavior.hurt_by_target": {
+          "priority": 1,
+          "entity_types": {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "player"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "villager"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "irongolem"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "wandering_trader"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "trader_llama"
+                }
+              ]
+            },
+            "max_dist": 16
+          }
+        },
+        "minecraft:behavior.avoid_mob_type": {
+          "priority": 1,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "creeper"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "other",
+                    "value": "minecraft:explode"
+                  }
+                ]
+              },
+              "max_dist": 8,
+              "walk_speed_multiplier": 0.875,
+              "sprint_speed_multiplier": 0.875
+            }
+          ]
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "on_damage": {
+                "filters": {
+                  "any_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "villager"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "wandering_trader"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "irongolem"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "trader_llama"
+                    }
+                  ]
+                }
+              },
+              "deals_damage": false
+            }
+          ]
+        },
+        "minecraft:on_target_acquired": {
+          "event": "minecraft:start_attacking",
+          "target": "self"
+        },
+        "minecraft:on_target_escape": {
+          "event": "minecraft:stop_attacking",
+          "target": "self"
+        }
+      },
+      "attacking": {
+        "minecraft:angry": {
+          "duration": -1,
+          "broadcast_anger": false,
+          "calm_event": {
+            "event": "minecraft:stop_attacking",
+            "target": "self"
+          },
+          "angry_sound": "haggle.no",
+          "sound_interval": {
+            "range_min": 2,
+            "range_max": 5
+          }
+        }
+      },
+      "wooden_sword": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_wooden_sword.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_wooden_sword.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "stone_sword": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_stone_sword.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_stone_sword.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "iron_sword": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_iron_sword.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_iron_sword.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "golden_sword": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_golden_sword.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_golden_sword.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "diamond_sword": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_diamond_sword.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_diamond_sword.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "netherite_sword": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_netherite_sword.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_netherite_sword.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "wooden_axe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_wooden_axe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_wooden_axe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "stone_axe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_stone_axe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_stone_axe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "iron_axe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_iron_axe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_iron_axe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "golden_axe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_golden_axe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_golden_axe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "diamond_axe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_diamond_axe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_diamond_axe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "netherite_axe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_netherite_axe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_netherite_axe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "wooden_pickaxe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_wooden_pickaxe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_wooden_pickaxe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "stone_pickaxe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_stone_pickaxe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_stone_pickaxe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "iron_pickaxe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_iron_pickaxe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_iron_pickaxe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "golden_pickaxe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_golden_pickaxe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_golden_pickaxe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "diamond_pickaxe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_diamond_pickaxe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_diamond_pickaxe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "netherite_pickaxe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_netherite_pickaxe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_netherite_pickaxe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "wooden_shovel": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_wooden_shovel.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_wooden_shovel.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "stone_shovel": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_stone_shovel.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_stone_shovel.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "iron_shovel": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_iron_shovel.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_iron_shovel.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "golden_shovel": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_golden_shovel.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_golden_shovel.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "diamond_shovel": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_diamond_shovel.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_diamond_shovel.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "netherite_shovel": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_netherite_shovel.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_netherite_shovel.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "wooden_hoe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_wooden_hoe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_wooden_hoe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "stone_hoe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_stone_hoe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_stone_hoe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "iron_hoe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_iron_hoe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_iron_hoe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "golden_hoe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_golden_hoe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_golden_hoe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "diamond_hoe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_diamond_hoe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_diamond_hoe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "netherite_hoe": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_netherite_hoe.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_netherite_hoe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "wooden_sword_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_wooden_sword.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "stone_sword_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_stone_sword.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "iron_sword_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_iron_sword.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "golden_sword_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_golden_sword.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "diamond_sword_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_diamond_sword.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "netherite_sword_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_netherite_sword.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "wooden_axe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_wooden_axe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "stone_axe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_stone_axe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "iron_axe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_iron_axe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "golden_axe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_golden_axe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "diamond_axe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_diamond_axe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "netherite_axe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_netherite_axe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "wooden_pickaxe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_wooden_pickaxe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "stone_pickaxe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_stone_pickaxe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "iron_pickaxe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_iron_pickaxe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "golden_pickaxe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_golden_pickaxe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "diamond_pickaxe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_diamond_pickaxe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "netherite_pickaxe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_netherite_pickaxe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "wooden_shovel_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_wooden_shovel.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "stone_shovel_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_stone_shovel.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "iron_shovel_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_iron_shovel.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "golden_shovel_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_golden_shovel.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "diamond_shovel_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_diamond_shovel.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "netherite_shovel_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_netherite_shovel.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "wooden_hoe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_wooden_hoe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "stone_hoe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_stone_hoe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "iron_hoe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_iron_hoe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "golden_hoe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_golden_hoe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "diamond_hoe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_diamond_hoe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "netherite_hoe_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_netherite_hoe.json"
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "wandering_trader",
+          "mob",
+          "no_component_groups"
+        ]
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:spawn_entity": {
+        "entities": [
+          {
+            "min_wait_time": 0,
+            "max_wait_time": 0,
+            "spawn_entity": "llama",
+            "spawn_event": "minecraft:from_wandering_trader",
+            "single_use": true,
+            "num_to_spawn": 2,
+            "should_leash": true
+          }
+        ]
+      },
+      "minecraft:economy_trade_table": {
+        "display_name": "entity.wandering_trader.name",
+        "table": "trading/economy_trades/wandering_trader_trades.json",
+        "new_screen": true
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:health": {
+        "value": 20,
+        "max": 20
+      },
+      "minecraft:attack": {
+        "damage": 2
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 1.9
+      },
+      "minecraft:movement": {
+        "value": 0.5
+      },
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "can_pass_doors": true,
+        "can_open_doors": true,
+        "avoid_water": true
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:healable": {
+        "items": [
+          {
+            "item": "glow_berries",
+            "heal_amount": 2
+          },
+          {
+            "item": "sweet_berries",
+            "heal_amount": 2
+          },
+          {
+            "item": "apple",
+            "heal_amount": 4
+          },
+          {
+            "item": "appleEnchanted",
+            "heal_amount": 4,
+            "effects": [
+              {
+                "name": "regeneration",
+                "chance": 1,
+                "duration": 30,
+                "amplifier": 3
+              },
+              {
+                "name": "absorption",
+                "chance": 1,
+                "duration": 120,
+                "amplifier": 3
+              },
+              {
+                "name": "resistance",
+                "chance": 1,
+                "duration": 120,
+                "amplifier": 0
+              },
+              {
+                "name": "fire_resistance",
+                "chance": 1,
+                "duration": 120,
+                "amplifier": 0
+              }
+            ]
+          },
+          {
+            "item": "baked_potato",
+            "heal_amount": 5
+          },
+          {
+            "item": "beef",
+            "heal_amount": 3
+          },
+          {
+            "item": "beetroot",
+            "heal_amount": 1
+          },
+          {
+            "item": "bread",
+            "heal_amount": 5
+          },
+          {
+            "item": "cake",
+            "heal_amount": 14
+          },
+          {
+            "item": "carrot",
+            "heal_amount": 3
+          },
+          {
+            "item": "chicken",
+            "heal_amount": 2,
+            "effects": [
+              {
+                "name": "hunger",
+                "chance": 0.3,
+                "duration": 30,
+                "amplifier": 0
+              }
+            ]
+          },
+          {
+            "item": "clownfish",
+            "heal_amount": 1
+          },
+          {
+            "item": "cooked_beef",
+            "heal_amount": 8
+          },
+          {
+            "item": "cooked_chicken",
+            "heal_amount": 6
+          },
+          {
+            "item": "cooked_fish",
+            "heal_amount": 5
+          },
+          {
+            "item": "cooked_porkchop",
+            "heal_amount": 8
+          },
+          {
+            "item": "cooked_rabbit",
+            "heal_amount": 5
+          },
+          {
+            "item": "cooked_salmon",
+            "heal_amount": 6
+          },
+          {
+            "item": "cookie",
+            "heal_amount": 2
+          },
+          {
+            "item": "fish",
+            "heal_amount": 2
+          },
+          {
+            "item": "golden_apple",
+            "heal_amount": 4,
+            "effects": [
+              {
+                "name": "regeneration",
+                "chance": 1,
+                "duration": 5,
+                "amplifier": 1
+              },
+              {
+                "name": "absorption",
+                "chance": 1,
+                "duration": 120,
+                "amplifier": 0
+              }
+            ]
+          },
+          {
+            "item": "golden_carrot",
+            "heal_amount": 6
+          },
+          {
+            "item": "melon",
+            "heal_amount": 2
+          },
+          {
+            "item": "muttonCooked",
+            "heal_amount": 6
+          },
+          {
+            "item": "muttonRaw",
+            "heal_amount": 2
+          },
+          {
+            "item": "poisonous_potato",
+            "heal_amount": 2,
+            "effects": [
+              {
+                "name": "poison",
+                "chance": 0.6,
+                "duration": 5,
+                "amplifier": 0
+              }
+            ]
+          },
+          {
+            "item": "porkchop",
+            "heal_amount": 3
+          },
+          {
+            "item": "potato",
+            "heal_amount": 1
+          },
+          {
+            "item": "pufferfish",
+            "heal_amount": 1,
+            "effects": [
+              {
+                "name": "hunger",
+                "chance": 1,
+                "duration": 15,
+                "amplifier": 2
+              },
+              {
+                "name": "nausea",
+                "chance": 1,
+                "duration": 15,
+                "amplifier": 0
+              },
+              {
+                "name": "poison",
+                "chance": 1,
+                "duration": 60,
+                "amplifier": 1
+              }
+            ]
+          },
+          {
+            "item": "pumpkin_pie",
+            "heal_amount": 8
+          },
+          {
+            "item": "rabbit",
+            "heal_amount": 2
+          },
+          {
+            "item": "rotten_flesh",
+            "heal_amount": 4,
+            "effects": [
+              {
+                "name": "hunger",
+                "chance": 0.8,
+                "duration": 30,
+                "amplifier": 0
+              }
+            ]
+          },
+          {
+            "item": "salmon",
+            "heal_amount": 2
+          },
+          {
+            "item": "dried_kelp",
+            "heal_amount": 1
+          },
+          {
+            "item": "spider_eye",
+            "heal_amount": 2,
+            "effects": [
+              {
+                "name": "poison",
+                "chance": 1,
+                "duration": 5,
+                "amplifier": 0
+              }
+            ]
+          }
+        ]
+      },
+      "minecraft:behavior.trade_with_player": {
+        "priority": 1
+      },      
+      "minecraft:behavior.look_at_trading_player": {
+        "priority": 4
+      },
+      "minecraft:behavior.restrict_open_door": {
+        "priority": 5
+      },
+      "minecraft:behavior.open_door": {
+        "priority": 6,
+        "close_door_after": true
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 8,
+        "look_distance": 8,
+        "probability": 0.02
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 9
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:environment_sensor": {
+        "triggers": [
+          {
+            "filters": {
+              "test": "is_family",
+              "operator": "==",
+              "value": "no_component_groups"
+            },
+            "event": "minecraft:entity_spawned"
+          }
+        ]
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "randomize": [
+          {
+            "weight": 7500,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "unstrengthened"
+              ]
+            }
+          },
+          {
+            "weight": 20,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "wooden_axe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 20,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "wooden_hoe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 20,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "wooden_pickaxe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 20,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "wooden_shovel_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 20,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "wooden_sword_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 125,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "stone_axe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 125,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "stone_hoe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 125,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "stone_pickaxe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 125,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "stone_shovel_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 125,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "stone_sword_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 200,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "iron_axe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 200,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "iron_hoe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 200,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "iron_pickaxe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 200,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "iron_shovel_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 200,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "iron_sword_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 100,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "golden_axe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 100,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "golden_hoe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 100,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "golden_pickaxe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 100,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "golden_shovel_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 100,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "golden_sword_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 50,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "diamond_axe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 50,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "diamond_hoe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 50,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "diamond_pickaxe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 50,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "diamond_shovel_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 50,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "diamond_sword_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 5,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "netherite_axe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 5,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "netherite_hoe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 5,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "netherite_pickaxe_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 5,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "netherite_shovel_on_spawn"
+              ]
+            }
+          },
+          {
+            "weight": 5,
+            "remove": {},
+            "add": {
+              "component_groups": [
+                "strengthened_on_spawn",
+                "netherite_sword_on_spawn"
+              ]
+            }
+          }
+        ]
+      },
+      "minecraft:scheduled": {
+        "add": {
+          "component_groups": [
+            "managed"
+          ]
+        }
+      },
+      "minecraft:start_despawn": {
+        "add": {
+          "component_groups": [
+            "despawning"
+          ]
+        }
+      },
+      "minecraft:become_scared": {
+        "add": {
+          "component_groups": [
+            "minecraft:scared"
+          ]
+        }
+      },
+      "minecraft:become_calm": {
+        "remove": {
+          "component_groups": [
+            "minecraft:scared"
+          ]
+        }
+      },
+      "wooden_axe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "wooden_axe"
+          ]
+        }
+      },
+      "wooden_hoe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "wooden_hoe"
+          ]
+        }
+      },
+      "wooden_pickaxe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "wooden_pickaxe"
+          ]
+        }
+      },
+      "wooden_shovel": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "wooden_shovel"
+          ]
+        }
+      },
+      "wooden_sword": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "wooden_sword"
+          ]
+        }
+      },
+      "stone_axe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "stone_axe"
+          ]
+        }
+      },
+      "stone_hoe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "stone_hoe"
+          ]
+        }
+      },
+      "stone_pickaxe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "stone_pickaxe"
+          ]
+        }
+      },
+      "stone_shovel": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "stone_shovel"
+          ]
+        }
+      },
+      "stone_sword": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "stone_sword"
+          ]
+        }
+      },
+      "iron_axe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "iron_axe"
+          ]
+        }
+      },
+      "iron_hoe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "iron_hoe"
+          ]
+        }
+      },
+      "iron_pickaxe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "iron_pickaxe"
+          ]
+        }
+      },
+      "iron_shovel": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "iron_shovel"
+          ]
+        }
+      },
+      "iron_sword": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "iron_sword"
+          ]
+        }
+      },
+      "golden_axe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "golden_axe"
+          ]
+        }
+      },
+      "golden_hoe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "golden_hoe"
+          ]
+        }
+      },
+      "golden_pickaxe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "golden_pickaxe"
+          ]
+        }
+      },
+      "golden_shovel": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "golden_shovel"
+          ]
+        }
+      },
+      "golden_sword": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "golden_sword"
+          ]
+        }
+      },
+      "diamond_axe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "diamond_axe"
+          ]
+        }
+      },
+      "diamond_hoe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "diamond_hoe"
+          ]
+        }
+      },
+      "diamond_pickaxe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "diamond_pickaxe"
+          ]
+        }
+      },
+      "diamond_shovel": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "diamond_shovel"
+          ]
+        }
+      },
+      "diamond_sword": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "diamond_sword"
+          ]
+        }
+      },
+      "netherite_axe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "netherite_axe"
+          ]
+        }
+      },
+      "netherite_hoe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "netherite_hoe"
+          ]
+        }
+      },
+      "netherite_pickaxe": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "netherite_pickaxe"
+          ]
+        }
+      },
+      "netherite_shovel": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "netherite_shovel"
+          ]
+        }
+      },
+      "netherite_sword": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "netherite_sword"
+          ]
+        }
+      },
+      "minecraft:start_attacking": {
+        "add": {
+          "component_groups": [
+            "attacking"
+          ]
+        }
+      },
+      "minecraft:stop_attacking": {
+        "remove": {
+          "component_groups": [
+            "attacking"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "mob.irongolem.repair": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mob/irongolem/repair"
+    ]
+  }
+}
