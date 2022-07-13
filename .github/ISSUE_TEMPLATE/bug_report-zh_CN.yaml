@@ -1,25 +1,25 @@
-name: 錯誤報告（繁體中文）
-description: 提交 強化村民 錯誤報告
+name: 漏洞报告（简体中文）
+description: 提交 强化村民 漏洞报告
 title: "[Bug] "
 labels: ["Bug", "In triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        感謝您抽出寶貴時間填寫此錯誤報告！
+        感谢您抽出宝贵时间填写此漏洞报告！
   - type: textarea
     id: what-happened
     attributes:
-      label: 錯誤描述
-      description: 請詳細描述發生的錯誤資訊。
-      placeholder: 告訴我們發生了什麼錯誤。
+      label: 漏洞描述
+      description: 请详细描述发生的漏洞信息。
+      placeholder: 告诉我们发生了什么漏洞。
     validations:
       required: true
   - type: textarea
     id: reproduce
     attributes:
-      label: 重現步驟
-      description: 請描述觸發錯誤的步驟。
+      label: 重现步骤
+      description: 请描述触发漏洞的步骤。
       placeholder: |
         1. ...
         2. ...
@@ -30,28 +30,28 @@ body:
   - type: input
     id: expected-behavior
     attributes:
-      label: 預期行為
-      description: 請簡要描述您想要的效果。
+      label: 预期行为
+      description: 请简要描述您想要的效果。
     validations:
       required: true
   - type: input
     id: actual-behavior
     attributes:
-      label: 實際行為
-      description: 請簡要說明實際結果。
+      label: 实际行为
+      description: 请简要说明实际结果。
     validations:
       required: true
   - type: input
     id: version
     attributes:
-      label: 強化村民 版本
-      description: 你目前使用的是什麼版本的 強化村民？（例如 1.1.3，可從附加包標題中指示的版本號中找到）
+      label: 强化村民 版本
+      description: 你目前使用的是什么版本的 强化村民？（例如 1.1.3，可从附加包标题中指示的版本号中找到）
     validations:
       required: true
   - type: dropdown
     id: operating-system
     attributes:
-      label: 您正在使用的裝置的系統是什麼？
+      label: 您正在使用的设备的系统是什么？
       options:
         - Windows
         - iOS

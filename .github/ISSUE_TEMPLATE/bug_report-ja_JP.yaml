@@ -1,0 +1,61 @@
+name: バグレポート（日本語）
+description: 強化された村人 のバグレポートを提出する
+title: "[Bug] "
+labels: ["Bug", "In triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        このバグレポートにご記入いただき、ありがとうございます。
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: バグの説明
+      description: 発生したバグ情報を詳しく説明してください。
+      placeholder: 発生したバグを教えてください。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 再現する手順
+      description: バグを引き起こしたステップを説明してください。
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+      render: bash
+    validations:
+      required: true
+  - type: input
+    id: expected-behavior
+    attributes:
+      label: 予想される動作
+      description: 希望する効果について簡単に説明してください。
+    validations:
+      required: true
+  - type: input
+    id: actual-behavior
+    attributes:
+      label: 実際の動作
+      description: 実際の結果について簡単に説明してください。
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 強化された村人 バージョン
+      description: 現在使用している 強化された村人 のバージョンは何ですか？（例：1.1.3。アドオンのタイトルに示されているバージョン番号から検出されます）
+    validations:
+      required: true
+  - type: dropdown
+    id: operating-system
+    attributes:
+      label: 使用しているデバイスのシステムは何ですか？
+      options:
+        - Windows
+        - iOS
+        - Android
+        - その他
+    validations:
+      required: true
