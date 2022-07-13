@@ -6,20 +6,20 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for taking the time to fill out this bug report
+        Thank you for taking the time to fill out this bug report!
   - type: textarea
     id: what-happened
     attributes:
       label: Description of the bug
-      description: Please describe in detail the bug information that occurred
+      description: Please describe in detail the bug information that occurred.
       placeholder: Tell us what bug occurred.
     validations:
       required: true
   - type: textarea
     id: reproduce
     attributes:
-      label: reproduce step
-      description: Please describe the step that triggered the bug
+      label: Steps to Reproduce
+      description: Please describe the step that triggered the bug.
       placeholder: |
         1. ...
         2. ...
@@ -30,28 +30,28 @@ body:
   - type: input
     id: expected-behavior
     attributes:
-      label: expected-behavior
-      description: Please give a brief description of the desired effect
+      label: Expected Behavior
+      description: Please give a brief description of the desired effect.
     validations:
       required: true
   - type: input
     id: actual-behavior
     attributes:
-      label: actual-behavior
-      description: Please give a brief description of the actual result
+      label: Actual Behavior
+      description: Please give a brief description of the actual result.
     validations:
       required: true
   - type: input
     id: version
     attributes:
-      label: Strengthened Villager version
+      label: Strengthened Villager Version
       description: What version of Strengthened Villager are you currently using? (e.g. 1.1.3, found from the version number indicated in the title of the add-on)
     validations:
       required: true
   - type: dropdown
     id: operating-system
     attributes:
-      label: What is your operating system?
+      label: What is the system of the device you are using?
       options:
         - Windows
         - iOS
