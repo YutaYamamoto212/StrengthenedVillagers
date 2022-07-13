@@ -1,38 +1,61 @@
----
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
-
----
-
-**Describe the bug**
-A clear and concise description of what the bug is.
-
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
-
-**Expected behavior**
-A clear and concise description of what you expected to happen.
-
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
-
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
-
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
-
-**Additional context**
-Add any other context about the problem here.
+name: Bug Report (English)
+description: Submit Strengthened Villager bug report
+title: "[Bug] "
+labels: ["Bug", "In triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to fill out this bug report
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Description of the bug
+      description: Please describe in detail the bug information that occurred
+      placeholder: Tell us what bug occurred.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: reproduce step
+      description: Please describe the step that triggered the bug
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+      render: bash
+    validations:
+      required: true
+  - type: input
+    id: expected-behavior
+    attributes:
+      label: expected-behavior
+      description: Please give a brief description of the desired effect
+    validations:
+      required: true
+  - type: input
+    id: actual-behavior
+    attributes:
+      label: actual-behavior
+      description: Please give a brief description of the actual result
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Strengthened Villager version
+      description: What version of Strengthened Villager are you currently using? (e.g. 1.1.3, found from the version number indicated in the title of the add-on)
+    validations:
+      required: true
+  - type: dropdown
+    id: operating-system
+    attributes:
+      label: What is your operating system?
+      options:
+        - Windows
+        - iOS
+        - Android
+        - Other
+    validations:
+      required: true
