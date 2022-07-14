@@ -60,20 +60,30 @@
             "operator": "!=",
             "value": 1
           },
-          "breeds_with": {
-            "mate_type": "minecraft:llama",
-            "baby_type": "minecraft:llama",
-            "breed_event": {
-              "event": "minecraft:entity_born",
-              "target": "baby"
+          "breeds_with": [
+            {
+              "mate_type": "minecraft:llama",
+              "baby_type": "minecraft:llama",
+              "breed_event": {
+                "event": "minecraft:entity_born",
+                "target": "baby"
+              }
+            },
+            {
+              "mate_type": "minecraft:trader_llama",
+              "baby_type": "minecraft:trader_llama",
+              "breed_event": {
+                "event": "minecraft:entity_born",
+                "target": "baby"
+              }
             }
-          },
+          ],
           "breed_items": [
             "hay_block"
           ]
         }
       },
-      "minecraft:llama_wandering_trader": {
+      "minecraft:llama_wandering_trader": { // For compatibility with older versions, this component group has not been removed.
         "minecraft:mark_variant": {
           "value": 1
         },
@@ -290,8 +300,8 @@
           "seats": {
             "position": [
               0,
-              1.1,
-              -0.2
+              1.17,
+              -0.3
             ]
           }
         },
@@ -628,7 +638,7 @@
           ]
         }
       },
-      "minecraft:from_wandering_trader": {
+      "minecraft:from_wandering_trader": { // For compatibility with older versions, this event has not been removed.
         "sequence": [
           {
             "add": {
@@ -690,7 +700,7 @@
           ]
         }
       },
-      "minecraft:defend_wandering_trader": {
+      "minecraft:defend_wandering_trader": { // For compatibility with older versions, this event has not been removed.
         "add": {
           "component_groups": [
             "minecraft:llama_defend_trader"

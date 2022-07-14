@@ -26,8 +26,7 @@
           "broadcastAnger": true,
           "broadcastRange": 10,
           "broadcast_targets": [
-            "llama",
-			"trader_llama"
+            "trader_llama"
           ],
           "broadcast_filters": {
             "test": "is_leashed_to",
@@ -299,7 +298,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "diamond_axe"
@@ -322,7 +336,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "diamond_hoe"
@@ -345,7 +374,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "diamond_pickaxe"
@@ -368,7 +412,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "diamond_shovel"
@@ -391,7 +450,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "diamond_sword"
@@ -414,7 +488,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "golden_axe"
@@ -437,7 +526,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "golden_hoe"
@@ -460,7 +564,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "golden_pickaxe"
@@ -483,7 +602,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "golden_shovel"
@@ -506,7 +640,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "golden_sword"
@@ -529,7 +678,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "iron_axe"
@@ -552,7 +716,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "iron_hoe"
@@ -575,7 +754,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "iron_pickaxe"
@@ -598,7 +792,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "iron_shovel"
@@ -621,7 +830,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "iron_sword"
@@ -644,7 +868,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "netherite_axe"
@@ -667,7 +906,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "netherite_hoe"
@@ -690,7 +944,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "netherite_pickaxe"
@@ -713,7 +982,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "netherite_shovel"
@@ -736,7 +1020,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "netherite_sword"
@@ -759,7 +1058,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "stone_axe"
@@ -782,7 +1096,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "stone_hoe"
@@ -805,7 +1134,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "stone_pickaxe"
@@ -828,7 +1172,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "stone_shovel"
@@ -851,7 +1210,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "stone_sword"
@@ -874,7 +1248,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "wooden_axe"
@@ -897,7 +1286,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "wooden_hoe"
@@ -920,7 +1324,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "wooden_pickaxe"
@@ -943,7 +1362,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "wooden_shovel"
@@ -966,7 +1400,22 @@
                       "subject": "other",
                       "value": "player"
                     },
-                    {"any_of":[{"test":"is_sneaking","subject":"other","operator":"==","value":true},{"test": "has_ability","subject": "other","operator":"equals","value":"instabuild"}]}
+                    {
+                      "any_of": [
+                        {
+                          "test": "is_sneaking",
+                          "subject": "other",
+                          "operator": "==",
+                          "value": true
+                        },
+                        {
+                          "test": "has_ability",
+                          "subject": "other",
+                          "operator": "equals",
+                          "value": "instabuild"
+                        }
+                      ]
+                    }
                   ]
                 },
                 "event": "wooden_sword"
@@ -2019,7 +2468,7 @@
           {
             "min_wait_time": 0,
             "max_wait_time": 0,
-            "spawn_entity": "llama",
+            "spawn_entity": "llama", // For compatibility with older versions, the spawned entity is still minecraft:llama.
             "spawn_event": "minecraft:from_wandering_trader",
             "single_use": true,
             "num_to_spawn": 2,
@@ -2315,7 +2764,7 @@
       },
       "minecraft:behavior.trade_with_player": {
         "priority": 1
-      },      
+      },
       "minecraft:behavior.look_at_trading_player": {
         "priority": 4
       },

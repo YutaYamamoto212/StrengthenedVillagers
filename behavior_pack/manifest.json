@@ -2,12 +2,12 @@
   "format_version": 2,
   "header": {
     "description": "Some strengthened villagers and wandering traders will spawn in the world. You can also strengthen them by giving them weapons.",
-    "name": "Strengthened Villagers Addon v1.1.3",
-    "uuid": "0e9fb62e-1866-4840-9fec-163d06b80100",
+    "name": "Strengthened Villagers Addon v1.1.4",
+    "uuid": "0ed33f9b-3693-4b74-af31-d1271ae98535",
     "version": [
       1,
       1,
-      3
+      4
     ],
     "min_engine_version": [
       1,
@@ -19,11 +19,11 @@
     {
       "description": "Some strengthened villagers and wandering traders will spawn in the world. You can also strengthen them by giving them weapons.",
       "type": "data",
-      "uuid": "f66f3ede-bae0-4df4-b465-91b3ad3b19fd",
+      "uuid": "d16a9f65-7325-447d-b1e1-7e4809aeec35",
       "version": [
         1,
         1,
-        3
+        4
       ]
     }
   ]
