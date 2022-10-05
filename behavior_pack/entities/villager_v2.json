@@ -28,7 +28,9 @@
         }
       },
       "trade_resupply_component_group": {
-        "minecraft:trade_resupply": {}
+        "minecraft:trade_resupply": {
+
+        }
       },
       "become_witch": {
         "minecraft:transformation": {
@@ -643,12 +645,24 @@
         }
       },
       "job_specific_goals": {
-        "minecraft:behavior.inspect_bookshelf": {},
-        "minecraft:behavior.harvest_farm_block": {},
-        "minecraft:behavior.explore_outskirts": {},
-        "minecraft:behavior.work": {},
-        "minecraft:behavior.mingle": {},
-        "minecraft:behavior.sleep": {}
+        "minecraft:behavior.inspect_bookshelf": {
+
+        },
+        "minecraft:behavior.harvest_farm_block": {
+
+        },
+        "minecraft:behavior.explore_outskirts": {
+
+        },
+        "minecraft:behavior.work": {
+
+        },
+        "minecraft:behavior.mingle": {
+
+        },
+        "minecraft:behavior.sleep": {
+
+        }
       },
       "work_schedule_villager": {
         "minecraft:behavior.work": {
@@ -792,7 +806,9 @@
           "mingle_distance": 2
         }
       },
-      "home_schedule_villager": {},
+      "home_schedule_villager": {
+
+      },
       "bed_schedule_villager": {
         "minecraft:behavior.sleep": {
           "priority": 3,
@@ -904,7 +920,9 @@
         }
       },
       "trade_components": {
-        "minecraft:economy_trade_table": {}
+        "minecraft:economy_trade_table": {
+
+        }
       },
       "unskilled": {
         "minecraft:type_family": {
@@ -1411,9 +1429,15 @@
         }
       },
       "baby": {
-        "minecraft:is_baby": {},
+        "minecraft:is_baby": {
+
+        },
         "minecraft:scale": {
-          "value": 0.5
+          "value": 1
+        },
+		"minecraft:collision_box": {
+          "width": 0.3,
+          "height": 0.95
         },
         "minecraft:ageable": {
           "duration": 1200,
@@ -1510,7 +1534,11 @@
         }
       },
       "adult": {
-        "minecraft:behavior.make_love": {
+        "minecraft:collision_box": {
+          "width": 0.6,
+          "height": 1.9
+        },
+		"minecraft:behavior.make_love": {
           "priority": 5
         },
         "minecraft:behavior.receive_love": {
@@ -1661,7 +1689,9 @@
         }
       },
       "unstrengthened": {
-        "minecraft:hide": {},
+        "minecraft:hide": {
+
+        },
         "minecraft:behavior.hide": {
           "priority": 0,
           "speed_multiplier": 0.8,
@@ -1988,6 +2018,113 @@
             "range_min": 2,
             "range_max": 5
           }
+        }
+      },
+      "bow": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_bow.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_bow.json"
+        },
+        "minecraft:behavior.charge_held_item": {
+          "priority": 3,
+          "items": [
+            "minecraft:arrow"
+          ]
+        }
+      },
+      "crossbow": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_crossbow.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_crossbow.json"
+        },
+        "minecraft:behavior.charge_held_item": {
+          "priority": 3,
+          "items": [
+            "minecraft:arrow"
+          ]
+        }
+      },
+      "arrow_ranged_mode": {
+        "minecraft:behavior.ranged_attack": {
+          "priority": 4,
+          "attack_interval_min": 1.0,
+          "attack_interval_max": 1.0,
+          "attack_radius": 8.0
+        },
+        "minecraft:shooter": {
+          "def": "minecraft:arrow"
+        },
+        "minecraft:environment_sensor": {
+          "triggers": {
+            "filters": {
+              "test": "is_underwater",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "event": "minecraft:arrow_melee_mode"
+          }
+        }
+      },
+      "arrow_melee_mode": {
+        "minecraft:behavior.melee_attack": {
+          "priority": 4,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        },
+        "minecraft:environment_sensor": {
+          "triggers": {
+            "filters": {
+              "test": "in_water",
+              "subject": "self",
+              "operator": "==",
+              "value": false
+            },
+            "event": "minecraft:arrow_ranged_mode"
+          }
+        }
+      },
+      "trident": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_trident.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_trident.json"
+        },
+        "minecraft:target_nearby_sensor": {
+          "inside_range": 3.0,
+          "outside_range": 5.0,
+          "on_inside_range": {
+            "event": "minecraft:trident_melee_mode",
+            "target": "self"
+          },
+          "on_outside_range": {
+            "event": "minecraft:trident_ranged_mode",
+            "target": "self"
+          }
+        }
+      },
+      "trident_melee_mode": {
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "speed_multiplier": 0.6,
+          "track_target": false
+        }
+      },
+      "trident_ranged_mode": {
+        "minecraft:shooter": {
+          "def": "minecraft:thrown_trident"
+        },
+        "minecraft:behavior.ranged_attack": {
+          "priority": 3,
+          "attack_interval_min": 1.0,
+          "attack_interval_max": 3.0,
+          "attack_radius": 10.0,
+          "swing": true
         }
       },
       "wooden_sword": {
@@ -2380,6 +2517,54 @@
           "track_target": false
         }
       },
+      "bow_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_bow.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_bow.json"
+        },
+        "minecraft:behavior.charge_held_item": {
+          "priority": 3,
+          "items": [
+            "minecraft:arrow"
+          ]
+        }
+      },
+      "crossbow_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_crossbow.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_crossbow.json"
+        },
+        "minecraft:behavior.charge_held_item": {
+          "priority": 3,
+          "items": [
+            "minecraft:arrow"
+          ]
+        }
+      },
+      "trident_on_spawn": {
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/villager_trident.json"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/villager_trident.json"
+        },
+        "minecraft:target_nearby_sensor": {
+          "inside_range": 3.0,
+          "outside_range": 5.0,
+          "on_inside_range": {
+            "event": "minecraft:switch_to_melee",
+            "target": "self"
+          },
+          "on_outside_range": {
+            "event": "minecraft:switch_to_ranged",
+            "target": "self"
+          }
+        }
+      },
       "wooden_sword_on_spawn": {
         "minecraft:equipment": {
           "table": "loot_tables/entities/villager_wooden_sword.json"
@@ -2684,6 +2869,156 @@
     "components": {
       "minecraft:interact": {
         "interactions": [
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "bow"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "any_of": [
+                      {
+                        "test": "is_sneaking",
+                        "subject": "other",
+                        "operator": "==",
+                        "value": true
+                      },
+                      {
+                        "test": "has_ability",
+                        "subject": "other",
+                        "operator": "equals",
+                        "value": "instabuild"
+                      }
+                    ]
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:equipment"
+                  }
+                ]
+              },
+              "event": "bow"
+            },
+            "use_item": true,
+            "interact_text": "action.interact.strengthen"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "crossbow"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "any_of": [
+                      {
+                        "test": "is_sneaking",
+                        "subject": "other",
+                        "operator": "==",
+                        "value": true
+                      },
+                      {
+                        "test": "has_ability",
+                        "subject": "other",
+                        "operator": "equals",
+                        "value": "instabuild"
+                      }
+                    ]
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:equipment"
+                  }
+                ]
+              },
+              "event": "crossbow"
+            },
+            "use_item": true,
+            "interact_text": "action.interact.strengthen"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "trident"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "any_of": [
+                      {
+                        "test": "is_sneaking",
+                        "subject": "other",
+                        "operator": "==",
+                        "value": true
+                      },
+                      {
+                        "test": "has_ability",
+                        "subject": "other",
+                        "operator": "equals",
+                        "value": "instabuild"
+                      }
+                    ]
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:equipment"
+                  }
+                ]
+              },
+              "event": "trident"
+            },
+            "use_item": true,
+            "interact_text": "action.interact.strengthen"
+          },
           {
             "on_interact": {
               "filters": {
@@ -4186,7 +4521,9 @@
           }
         ]
       },
-      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:is_hidden_when_invisible": {
+
+      },
       "minecraft:type_family": {
         "family": [
           "villager",
@@ -4207,7 +4544,9 @@
       "minecraft:attack": {
         "damage": 2
       },
-      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:conditional_bandwidth_optimization": {
+
+      },
       "minecraft:healable": {
         "items": [
           {
@@ -4462,7 +4801,9 @@
         "width": 0.6,
         "height": 1.9
       },
-      "minecraft:nameable": {},
+      "minecraft:nameable": {
+
+      },
       "minecraft:movement": {
         "value": 0.5
       },
@@ -4475,10 +4816,18 @@
       "minecraft:follow_range": {
         "value": 128
       },
-      "minecraft:annotation.open_door": {},
-      "minecraft:movement.basic": {},
-      "minecraft:jump.static": {},
-      "minecraft:can_climb": {},
+      "minecraft:annotation.open_door": {
+
+      },
+      "minecraft:movement.basic": {
+
+      },
+      "minecraft:jump.static": {
+
+      },
+      "minecraft:can_climb": {
+
+      },
       "minecraft:inventory": {
         "inventory_size": 8,
         "private": true
@@ -4578,7 +4927,9 @@
           }
         ]
       },
-      "minecraft:persistent": {},
+      "minecraft:persistent": {
+
+      },
       "minecraft:behavior.float": {
         "priority": 0
       },
@@ -4628,7 +4979,9 @@
         "priority": 10,
         "speed_multiplier": 0.6
       },
-      "minecraft:physics": {},
+      "minecraft:physics": {
+
+      },
       "minecraft:pushable": {
         "is_pushable": true,
         "is_pushable_by_piston": true
@@ -4757,7 +5110,7 @@
                   {
                     "randomize": [
                       {
-                        "weight": 7500,
+                        "weight": 7500000,
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4766,8 +5119,52 @@
                         }
                       },
                       {
-                        "weight": 20,
-                        "remove": {},
+                        "weight": 416667,
+                        "remove": {
+
+                        },
+                        "add": {
+                          "component_groups": [
+                            "adult",
+                            "strengthened_on_spawn",
+                            "bow_on_spawn",
+                            "arrow_ranged_mode"
+                          ]
+                        }
+                      },
+                      {
+                        "weight": 208333,
+                        "remove": {
+
+                        },
+                        "add": {
+                          "component_groups": [
+                            "adult",
+                            "strengthened_on_spawn",
+                            "crossbow_on_spawn",
+                            "arrow_ranged_mode"
+                          ]
+                        }
+                      },
+                      {
+                        "weight": 208333,
+                        "remove": {
+
+                        },
+                        "add": {
+                          "component_groups": [
+                            "adult",
+                            "strengthened_on_spawn",
+                            "trident_axe_on_spawn",
+                            "trident_melee_mode"
+                          ]
+                        }
+                      },
+                      {
+                        "weight": 13011,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4777,8 +5174,10 @@
                         }
                       },
                       {
-                        "weight": 20,
-                        "remove": {},
+                        "weight": 13011,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4788,8 +5187,10 @@
                         }
                       },
                       {
-                        "weight": 20,
-                        "remove": {},
+                        "weight": 13011,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4799,8 +5200,10 @@
                         }
                       },
                       {
-                        "weight": 20,
-                        "remove": {},
+                        "weight": 13011,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4810,8 +5213,10 @@
                         }
                       },
                       {
-                        "weight": 20,
-                        "remove": {},
+                        "weight": 13011,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4821,8 +5226,10 @@
                         }
                       },
                       {
-                        "weight": 125,
-                        "remove": {},
+                        "weight": 104085,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4832,8 +5239,10 @@
                         }
                       },
                       {
-                        "weight": 125,
-                        "remove": {},
+                        "weight": 104085,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4843,8 +5252,10 @@
                         }
                       },
                       {
-                        "weight": 125,
-                        "remove": {},
+                        "weight": 104085,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4854,8 +5265,10 @@
                         }
                       },
                       {
-                        "weight": 125,
-                        "remove": {},
+                        "weight": 104085,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4865,8 +5278,10 @@
                         }
                       },
                       {
-                        "weight": 125,
-                        "remove": {},
+                        "weight": 104085,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4876,8 +5291,10 @@
                         }
                       },
                       {
-                        "weight": 200,
-                        "remove": {},
+                        "weight": 208171,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4887,8 +5304,10 @@
                         }
                       },
                       {
-                        "weight": 200,
-                        "remove": {},
+                        "weight": 208171,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4898,8 +5317,10 @@
                         }
                       },
                       {
-                        "weight": 200,
-                        "remove": {},
+                        "weight": 208171,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4909,8 +5330,10 @@
                         }
                       },
                       {
-                        "weight": 200,
-                        "remove": {},
+                        "weight": 208171,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4920,8 +5343,10 @@
                         }
                       },
                       {
-                        "weight": 200,
-                        "remove": {},
+                        "weight": 208171,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4931,8 +5356,10 @@
                         }
                       },
                       {
-                        "weight": 100,
-                        "remove": {},
+                        "weight": 5204,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4942,8 +5369,10 @@
                         }
                       },
                       {
-                        "weight": 100,
-                        "remove": {},
+                        "weight": 5204,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4953,8 +5382,10 @@
                         }
                       },
                       {
-                        "weight": 100,
-                        "remove": {},
+                        "weight": 5204,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4964,8 +5395,10 @@
                         }
                       },
                       {
-                        "weight": 100,
-                        "remove": {},
+                        "weight": 5204,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4975,8 +5408,10 @@
                         }
                       },
                       {
-                        "weight": 100,
-                        "remove": {},
+                        "weight": 5204,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4986,8 +5421,10 @@
                         }
                       },
                       {
-                        "weight": 50,
-                        "remove": {},
+                        "weight": 2602,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -4997,8 +5434,10 @@
                         }
                       },
                       {
-                        "weight": 50,
-                        "remove": {},
+                        "weight": 2602,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5008,8 +5447,10 @@
                         }
                       },
                       {
-                        "weight": 50,
-                        "remove": {},
+                        "weight": 2602,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5019,8 +5460,10 @@
                         }
                       },
                       {
-                        "weight": 50,
-                        "remove": {},
+                        "weight": 2602,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5030,8 +5473,10 @@
                         }
                       },
                       {
-                        "weight": 50,
-                        "remove": {},
+                        "weight": 2602,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5041,8 +5486,10 @@
                         }
                       },
                       {
-                        "weight": 5,
-                        "remove": {},
+                        "weight": 260,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5052,8 +5499,10 @@
                         }
                       },
                       {
-                        "weight": 5,
-                        "remove": {},
+                        "weight": 260,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5063,8 +5512,10 @@
                         }
                       },
                       {
-                        "weight": 5,
-                        "remove": {},
+                        "weight": 260,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5074,8 +5525,10 @@
                         }
                       },
                       {
-                        "weight": 5,
-                        "remove": {},
+                        "weight": 260,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5085,8 +5538,10 @@
                         }
                       },
                       {
-                        "weight": 5,
-                        "remove": {},
+                        "weight": 260,
+                        "remove": {
+
+                        },
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5377,7 +5832,7 @@
                 "weight": 95,
                 "randomize": [
                   {
-                    "weight": 7500,
+                    "weight": 7500000,
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5386,8 +5841,52 @@
                     }
                   },
                   {
-                    "weight": 20,
-                    "remove": {},
+                    "weight": 416667,
+                    "remove": {
+
+                    },
+                    "add": {
+                      "component_groups": [
+                        "adult",
+                        "strengthened_on_spawn",
+                        "bow_on_spawn",
+                        "arrow_ranged_mode"
+                      ]
+                    }
+                  },
+                  {
+                    "weight": 208333,
+                    "remove": {
+
+                    },
+                    "add": {
+                      "component_groups": [
+                        "adult",
+                        "strengthened_on_spawn",
+                        "crossbow_on_spawn",
+                        "arrow_ranged_mode"
+                      ]
+                    }
+                  },
+                  {
+                    "weight": 208333,
+                    "remove": {
+
+                    },
+                    "add": {
+                      "component_groups": [
+                        "adult",
+                        "strengthened_on_spawn",
+                        "trident_axe_on_spawn",
+                        "trident_melee_mode"
+                      ]
+                    }
+                  },
+                  {
+                    "weight": 13011,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5397,8 +5896,10 @@
                     }
                   },
                   {
-                    "weight": 20,
-                    "remove": {},
+                    "weight": 13011,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5408,8 +5909,10 @@
                     }
                   },
                   {
-                    "weight": 20,
-                    "remove": {},
+                    "weight": 13011,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5419,8 +5922,10 @@
                     }
                   },
                   {
-                    "weight": 20,
-                    "remove": {},
+                    "weight": 13011,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5430,8 +5935,10 @@
                     }
                   },
                   {
-                    "weight": 20,
-                    "remove": {},
+                    "weight": 13011,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5441,8 +5948,10 @@
                     }
                   },
                   {
-                    "weight": 125,
-                    "remove": {},
+                    "weight": 104085,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5452,8 +5961,10 @@
                     }
                   },
                   {
-                    "weight": 125,
-                    "remove": {},
+                    "weight": 104085,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5463,8 +5974,10 @@
                     }
                   },
                   {
-                    "weight": 125,
-                    "remove": {},
+                    "weight": 104085,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5474,8 +5987,10 @@
                     }
                   },
                   {
-                    "weight": 125,
-                    "remove": {},
+                    "weight": 104085,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5485,8 +6000,10 @@
                     }
                   },
                   {
-                    "weight": 125,
-                    "remove": {},
+                    "weight": 104085,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5496,8 +6013,10 @@
                     }
                   },
                   {
-                    "weight": 200,
-                    "remove": {},
+                    "weight": 208171,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5507,8 +6026,10 @@
                     }
                   },
                   {
-                    "weight": 200,
-                    "remove": {},
+                    "weight": 208171,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5518,8 +6039,10 @@
                     }
                   },
                   {
-                    "weight": 200,
-                    "remove": {},
+                    "weight": 208171,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5529,8 +6052,10 @@
                     }
                   },
                   {
-                    "weight": 200,
-                    "remove": {},
+                    "weight": 208171,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5540,8 +6065,10 @@
                     }
                   },
                   {
-                    "weight": 200,
-                    "remove": {},
+                    "weight": 208171,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5551,8 +6078,10 @@
                     }
                   },
                   {
-                    "weight": 100,
-                    "remove": {},
+                    "weight": 5204,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5562,8 +6091,10 @@
                     }
                   },
                   {
-                    "weight": 100,
-                    "remove": {},
+                    "weight": 5204,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5573,8 +6104,10 @@
                     }
                   },
                   {
-                    "weight": 100,
-                    "remove": {},
+                    "weight": 5204,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5584,8 +6117,10 @@
                     }
                   },
                   {
-                    "weight": 100,
-                    "remove": {},
+                    "weight": 5204,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5595,8 +6130,10 @@
                     }
                   },
                   {
-                    "weight": 100,
-                    "remove": {},
+                    "weight": 5204,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5606,8 +6143,10 @@
                     }
                   },
                   {
-                    "weight": 50,
-                    "remove": {},
+                    "weight": 2602,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5617,8 +6156,10 @@
                     }
                   },
                   {
-                    "weight": 50,
-                    "remove": {},
+                    "weight": 2602,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5628,8 +6169,10 @@
                     }
                   },
                   {
-                    "weight": 50,
-                    "remove": {},
+                    "weight": 2602,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5639,8 +6182,10 @@
                     }
                   },
                   {
-                    "weight": 50,
-                    "remove": {},
+                    "weight": 2602,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5650,8 +6195,10 @@
                     }
                   },
                   {
-                    "weight": 50,
-                    "remove": {},
+                    "weight": 2602,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5661,8 +6208,10 @@
                     }
                   },
                   {
-                    "weight": 5,
-                    "remove": {},
+                    "weight": 260,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5672,8 +6221,10 @@
                     }
                   },
                   {
-                    "weight": 5,
-                    "remove": {},
+                    "weight": 260,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5683,8 +6234,10 @@
                     }
                   },
                   {
-                    "weight": 5,
-                    "remove": {},
+                    "weight": 260,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5694,8 +6247,10 @@
                     }
                   },
                   {
-                    "weight": 5,
-                    "remove": {},
+                    "weight": 260,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5705,8 +6260,10 @@
                     }
                   },
                   {
-                    "weight": 5,
-                    "remove": {},
+                    "weight": 260,
+                    "remove": {
+
+                    },
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6601,7 +7158,7 @@
       "minecraft:spawn_farmer": {
         "randomize": [
           {
-            "weight": 7500,
+            "weight": 7500000,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6619,7 +7176,67 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 416667,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "bow_on_spawn",
+                "arrow_ranged_mode",
+                "farmer",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "crossbow_on_spawn",
+                "arrow_ranged_mode",
+                "farmer",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "trident_on_spawn",
+                "trident_melee_mode",
+                "farmer",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6638,7 +7255,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6657,7 +7274,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6676,7 +7293,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6695,7 +7312,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6714,7 +7331,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6733,7 +7350,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6752,7 +7369,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6771,7 +7388,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6790,7 +7407,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6809,7 +7426,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6828,7 +7445,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6847,7 +7464,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6866,7 +7483,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6885,7 +7502,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6904,7 +7521,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6923,7 +7540,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6942,7 +7559,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6961,7 +7578,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6980,7 +7597,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -6999,7 +7616,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7018,7 +7635,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7037,7 +7654,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7056,7 +7673,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7075,7 +7692,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7094,7 +7711,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7113,7 +7730,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7132,7 +7749,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7151,7 +7768,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7170,7 +7787,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7189,7 +7806,7 @@
             }
           },
           {
-            "weight": 7500,
+            "weight": 7500000,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7207,7 +7824,67 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 416667,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "bow_on_spawn",
+                "arrow_ranged_mode",
+                "fisherman",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "crossbow_on_spawn",
+                "arrow_ranged_mode",
+                "fisherman",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "trident_on_spawn",
+                "trident_melee_mode",
+                "fisherman",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7226,7 +7903,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7245,7 +7922,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7264,7 +7941,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7283,7 +7960,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7302,7 +7979,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7321,7 +7998,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7340,7 +8017,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7359,7 +8036,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7378,7 +8055,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7397,7 +8074,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7416,7 +8093,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7435,7 +8112,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7454,7 +8131,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7473,7 +8150,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7492,7 +8169,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7511,7 +8188,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7530,7 +8207,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7549,7 +8226,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7568,7 +8245,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7587,7 +8264,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7606,7 +8283,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7625,7 +8302,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7644,7 +8321,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7663,7 +8340,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7682,7 +8359,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7701,7 +8378,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7720,7 +8397,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7739,7 +8416,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7758,7 +8435,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7777,7 +8454,7 @@
             }
           },
           {
-            "weight": 7500,
+            "weight": 7500000,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7795,7 +8472,67 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 416667,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "bow_on_spawn",
+                "arrow_ranged_mode",
+                "shepherd",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "crossbow_on_spawn",
+                "arrow_ranged_mode",
+                "shepherd",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "trident_on_spawn",
+                "trident_melee_mode",
+                "shepherd",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7814,7 +8551,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7833,7 +8570,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7852,7 +8589,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7871,7 +8608,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7890,7 +8627,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7909,7 +8646,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7928,7 +8665,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7947,7 +8684,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7966,7 +8703,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -7985,7 +8722,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8004,7 +8741,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8023,7 +8760,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8042,7 +8779,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8061,7 +8798,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8080,7 +8817,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8099,7 +8836,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8118,7 +8855,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8137,7 +8874,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8156,7 +8893,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8175,7 +8912,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8194,7 +8931,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8213,7 +8950,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8232,7 +8969,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8251,7 +8988,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8270,7 +9007,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8289,7 +9026,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8308,7 +9045,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8327,7 +9064,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8346,7 +9083,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8365,7 +9102,7 @@
             }
           },
           {
-            "weight": 7500,
+            "weight": 7500000,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8383,7 +9120,67 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 416667,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "bow_on_spawn",
+                "arrow_ranged_mode",
+                "fletcher",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "crossbow_on_spawn",
+                "arrow_ranged_mode",
+                "fletcher",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "trident_on_spawn",
+                "trident_melee_mode",
+                "fletcher",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8402,7 +9199,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8421,7 +9218,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8440,7 +9237,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8459,7 +9256,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8478,7 +9275,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8497,7 +9294,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8516,7 +9313,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8535,7 +9332,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8554,7 +9351,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8573,7 +9370,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8592,7 +9389,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8611,7 +9408,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8630,7 +9427,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8649,7 +9446,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8668,7 +9465,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8687,7 +9484,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8706,7 +9503,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8725,7 +9522,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8744,7 +9541,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8763,7 +9560,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8782,7 +9579,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8801,7 +9598,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8820,7 +9617,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8839,7 +9636,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8858,7 +9655,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8877,7 +9674,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8896,7 +9693,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8915,7 +9712,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8934,7 +9731,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8957,7 +9754,7 @@
       "minecraft:spawn_librarian": {
         "randomize": [
           {
-            "weight": 7500,
+            "weight": 7500000,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8975,7 +9772,67 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 416667,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "bow_on_spawn",
+                "arrow_ranged_mode",
+                "librarian",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "crossbow_on_spawn",
+                "arrow_ranged_mode",
+                "librarian",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "trident_on_spawn",
+                "trident_melee_mode",
+                "librarian",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -8994,7 +9851,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9013,7 +9870,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9032,7 +9889,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9051,7 +9908,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9070,7 +9927,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9089,7 +9946,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9108,7 +9965,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9127,7 +9984,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9146,7 +10003,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9165,7 +10022,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9184,7 +10041,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9203,7 +10060,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9222,7 +10079,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9241,7 +10098,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9260,7 +10117,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9279,7 +10136,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9298,7 +10155,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9317,7 +10174,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9336,7 +10193,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9355,7 +10212,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9374,7 +10231,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9393,7 +10250,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9412,7 +10269,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9431,7 +10288,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9450,7 +10307,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9469,7 +10326,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9488,7 +10345,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9507,7 +10364,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9526,7 +10383,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9545,7 +10402,7 @@
             }
           },
           {
-            "weight": 7500,
+            "weight": 7500000,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9563,7 +10420,67 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 416667,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "bow_on_spawn",
+                "arrow_ranged_mode",
+                "cartographer",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "crossbow_on_spawn",
+                "arrow_ranged_mode",
+                "cartographer",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "trident_on_spawn",
+                "trident_melee_mode",
+                "cartographer",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9582,7 +10499,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9601,7 +10518,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9620,7 +10537,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9639,7 +10556,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9658,7 +10575,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9677,7 +10594,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9696,7 +10613,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9715,7 +10632,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9734,7 +10651,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9753,7 +10670,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9772,7 +10689,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9791,7 +10708,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9810,7 +10727,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9829,7 +10746,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9848,7 +10765,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9867,7 +10784,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9886,7 +10803,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9905,7 +10822,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9924,7 +10841,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9943,7 +10860,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9962,7 +10879,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -9981,7 +10898,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10000,7 +10917,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10019,7 +10936,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10038,7 +10955,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10057,7 +10974,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10076,7 +10993,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10095,7 +11012,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10114,7 +11031,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10137,7 +11054,7 @@
       "minecraft:spawn_cleric": {
         "randomize": [
           {
-            "weight": 7500,
+            "weight": 7500000,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10155,7 +11072,67 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 416667,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "bow_on_spawn",
+                "arrow_ranged_mode",
+                "cleric",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "crossbow_on_spawn",
+                "arrow_ranged_mode",
+                "cleric",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "trident_on_spawn",
+                "trident_melee_mode",
+                "cleric",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10174,7 +11151,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10193,7 +11170,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10212,7 +11189,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10231,7 +11208,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10250,7 +11227,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10269,7 +11246,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10288,7 +11265,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10307,7 +11284,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10326,7 +11303,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10345,7 +11322,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10364,7 +11341,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10383,7 +11360,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10402,7 +11379,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10421,7 +11398,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10440,7 +11417,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10459,7 +11436,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10478,7 +11455,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10497,7 +11474,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10516,7 +11493,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10535,7 +11512,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10554,7 +11531,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10573,7 +11550,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10592,7 +11569,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10611,7 +11588,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10630,7 +11607,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10649,7 +11626,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10668,7 +11645,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10687,7 +11664,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10706,7 +11683,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10729,7 +11706,7 @@
       "minecraft:spawn_armorer": {
         "randomize": [
           {
-            "weight": 7500,
+            "weight": 7500000,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10747,7 +11724,67 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 416667,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "bow_on_spawn",
+                "arrow_ranged_mode",
+                "armorer",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "crossbow_on_spawn",
+                "arrow_ranged_mode",
+                "armorer",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "trident_on_spawn",
+                "trident_melee_mode",
+                "armorer",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10766,7 +11803,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10785,7 +11822,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10804,7 +11841,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10823,7 +11860,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10842,7 +11879,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10861,7 +11898,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10880,7 +11917,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10899,7 +11936,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10918,7 +11955,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10937,7 +11974,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10956,7 +11993,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10975,7 +12012,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -10994,7 +12031,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11013,7 +12050,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11032,7 +12069,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11051,7 +12088,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11070,7 +12107,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11089,7 +12126,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11108,7 +12145,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11127,7 +12164,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11146,7 +12183,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11165,7 +12202,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11184,7 +12221,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11203,7 +12240,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11222,7 +12259,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11241,7 +12278,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11260,7 +12297,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11279,7 +12316,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11298,7 +12335,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11317,7 +12354,7 @@
             }
           },
           {
-            "weight": 7500,
+            "weight": 7500000,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11335,7 +12372,67 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 416667,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "bow_on_spawn",
+                "arrow_ranged_mode",
+                "weaponsmith",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "crossbow_on_spawn",
+                "arrow_ranged_mode",
+                "weaponsmith",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "trident_on_spawn",
+                "trident_melee_mode",
+                "weaponsmith",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11354,7 +12451,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11373,7 +12470,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11392,7 +12489,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11411,7 +12508,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11430,7 +12527,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11449,7 +12546,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11468,7 +12565,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11487,7 +12584,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11506,7 +12603,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11525,7 +12622,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11544,7 +12641,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11563,7 +12660,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11582,7 +12679,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11601,7 +12698,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11620,7 +12717,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11639,7 +12736,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11658,7 +12755,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11677,7 +12774,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11696,7 +12793,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11715,7 +12812,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11734,7 +12831,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11753,7 +12850,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11772,7 +12869,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11791,7 +12888,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11810,7 +12907,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11829,7 +12926,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11848,7 +12945,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11867,7 +12964,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11886,7 +12983,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11905,7 +13002,7 @@
             }
           },
           {
-            "weight": 7500,
+            "weight": 7500000,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11923,7 +13020,67 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 416667,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "bow_on_spawn",
+                "arrow_ranged_mode",
+                "toolsmith",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "crossbow_on_spawn",
+                "arrow_ranged_mode",
+                "toolsmith",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "trident_on_spawn",
+                "trident_melee_mode",
+                "toolsmith",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11942,7 +13099,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11961,7 +13118,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11980,7 +13137,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -11999,7 +13156,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12018,7 +13175,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12037,7 +13194,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12056,7 +13213,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12075,7 +13232,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12094,7 +13251,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12113,7 +13270,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12132,7 +13289,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12151,7 +13308,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12170,7 +13327,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12189,7 +13346,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12208,7 +13365,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12227,7 +13384,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12246,7 +13403,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12265,7 +13422,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12284,7 +13441,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12303,7 +13460,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12322,7 +13479,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12341,7 +13498,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12360,7 +13517,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12379,7 +13536,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12398,7 +13555,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12417,7 +13574,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12436,7 +13593,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12455,7 +13612,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12474,7 +13631,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12493,7 +13650,7 @@
             }
           },
           {
-            "weight": 7500,
+            "weight": 7500000,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12511,7 +13668,67 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 416667,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "bow_on_spawn",
+                "arrow_ranged_mode",
+                "mason",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "crossbow_on_spawn",
+                "arrow_ranged_mode",
+                "mason",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "trident_on_spawn",
+                "trident_melee_mode",
+                "mason",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12530,7 +13747,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12549,7 +13766,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12568,7 +13785,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12587,7 +13804,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12606,7 +13823,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12625,7 +13842,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12644,7 +13861,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12663,7 +13880,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12682,7 +13899,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12701,7 +13918,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12720,7 +13937,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12739,7 +13956,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12758,7 +13975,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12777,7 +13994,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12796,7 +14013,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12815,7 +14032,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12834,7 +14051,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12853,7 +14070,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12872,7 +14089,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12891,7 +14108,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12910,7 +14127,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12929,7 +14146,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12948,7 +14165,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12967,7 +14184,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -12986,7 +14203,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13005,7 +14222,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13024,7 +14241,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13043,7 +14260,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13062,7 +14279,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13085,7 +14302,7 @@
       "minecraft:spawn_butcher": {
         "randomize": [
           {
-            "weight": 7500,
+            "weight": 7500000,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13103,7 +14320,67 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 416667,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "bow_on_spawn",
+                "arrow_ranged_mode",
+                "butcher",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "crossbow_on_spawn",
+                "arrow_ranged_mode",
+                "butcher",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "trident_on_spawn",
+                "trident_melee_mode",
+                "butcher",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13122,7 +14399,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13141,7 +14418,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13160,7 +14437,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13179,7 +14456,7 @@
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13198,7 +14475,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13217,7 +14494,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13236,7 +14513,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13255,7 +14532,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13274,7 +14551,7 @@
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13293,7 +14570,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13312,7 +14589,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13331,7 +14608,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13350,7 +14627,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13369,7 +14646,7 @@
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13388,7 +14665,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13407,7 +14684,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13426,7 +14703,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13445,7 +14722,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13464,7 +14741,7 @@
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13483,7 +14760,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13502,7 +14779,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13521,7 +14798,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13540,7 +14817,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13559,7 +14836,7 @@
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13578,7 +14855,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13597,7 +14874,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13616,7 +14893,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13635,7 +14912,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13654,7 +14931,7 @@
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13673,7 +14950,7 @@
             }
           },
           {
-            "weight": 7500,
+            "weight": 7500000,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13684,14 +14961,74 @@
               "component_groups": [
                 "adult",
                 "unstrengthened",
-                "butcher",
+                "leatherworker",
                 "behavior_non_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 20,
+            "weight": 416667,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "bow_on_spawn",
+                "arrow_ranged_mode",
+                "leatherworker",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "crossbow_on_spawn",
+                "arrow_ranged_mode",
+                "leatherworker",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 208333,
+            "remove": {
+              "component_groups": [
+                "baby",
+                "child_schedule"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "adult",
+                "strengthened_on_spawn",
+                "trident_on_spawn",
+                "trident_melee_mode",
+                "leatherworker",
+                "behavior_peasant",
+                "basic_schedule"
+              ]
+            }
+          },
+          {
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13703,14 +15040,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "wooden_axe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13722,14 +15059,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "wooden_hoe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13741,14 +15078,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "wooden_pickaxe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13760,14 +15097,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "wooden_shovel_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 20,
+            "weight": 13011,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13779,14 +15116,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "wooden_sword_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13798,14 +15135,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "stone_axe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13817,14 +15154,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "stone_hoe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13836,14 +15173,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "stone_pickaxe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13855,14 +15192,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "stone_shovel_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 125,
+            "weight": 104085,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13874,14 +15211,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "stone_sword_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13893,14 +15230,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "iron_axe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13912,14 +15249,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "iron_hoe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13931,14 +15268,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "iron_pickaxe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13950,14 +15287,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "iron_shovel_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 200,
+            "weight": 208171,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13969,14 +15306,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "iron_sword_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -13988,14 +15325,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "golden_axe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -14007,14 +15344,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "golden_hoe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -14026,14 +15363,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "golden_pickaxe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -14045,14 +15382,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "golden_shovel_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 100,
+            "weight": 5204,
             "remove": {
               "component_groups": [
                 "baby",
@@ -14064,14 +15401,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "golden_sword_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -14083,14 +15420,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "diamond_axe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -14102,14 +15439,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "diamond_hoe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -14121,14 +15458,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "diamond_pickaxe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -14140,14 +15477,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "diamond_shovel_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 50,
+            "weight": 2602,
             "remove": {
               "component_groups": [
                 "baby",
@@ -14159,14 +15496,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "diamond_sword_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -14178,14 +15515,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "netherite_axe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -14197,14 +15534,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "netherite_hoe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -14216,14 +15553,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "netherite_pickaxe_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -14235,14 +15572,14 @@
                 "adult",
                 "strengthened_on_spawn",
                 "netherite_shovel_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
             }
           },
           {
-            "weight": 5,
+            "weight": 260,
             "remove": {
               "component_groups": [
                 "baby",
@@ -14254,7 +15591,7 @@
                 "adult",
                 "strengthened_on_spawn",
                 "netherite_sword_on_spawn",
-                "butcher",
+                "leatherworker",
                 "behavior_peasant",
                 "basic_schedule"
               ]
@@ -15100,6 +16437,96 @@
           "component_groups": [
             "strengthened_by_player",
             "netherite_sword"
+          ]
+        }
+      },
+      "bow": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "bow",
+            "arrow_ranged_mode"
+          ]
+        }
+      },
+      "crossbow": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "crossbow",
+            "arrow_ranged_mode"
+          ]
+        }
+      },
+      "trident": {
+        "remove": {
+          "component_groups": [
+            "unstrengthened"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "strengthened_by_player",
+            "trident",
+            "trident_melee_mode"
+          ]
+        }
+      },
+      "minecraft:arrow_melee_mode": {
+        "remove": {
+          "component_groups": [
+            "arrow_ranged_mode"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "arrow_melee_mode"
+          ]
+        }
+      },
+      "minecraft:arrow_ranged_mode": {
+        "remove": {
+          "component_groups": [
+            "arrow_melee_mode"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "arrow_ranged_mode"
+          ]
+        }
+      },
+      "minecraft:trident_melee_mode": {
+        "remove": {
+          "component_groups": [
+            "trident_ranged_mode"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "trident_melee_mode"
+          ]
+        }
+      },
+      "minecraft:trident_ranged_mode": {
+        "remove": {
+          "component_groups": [
+            "trident_melee_mode"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "trident_ranged_mode"
           ]
         }
       },

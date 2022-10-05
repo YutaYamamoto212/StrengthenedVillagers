@@ -1,13 +1,13 @@
 {
   "format_version": 2,
   "header": {
-    "description": "Some strengthened villagers and wandering traders will spawn in the world. You can also strengthen them by giving them weapons.",
-    "name": "Strengthened Villagers Addon v1.1.4",
-    "uuid": "0ed33f9b-3693-4b74-af31-d1271ae98535",
+    "description": "Some strengthened villagers and wandering traders will spawn in the world. You can also strengthen them by giving them weapons. To ensure this works correctly, you should install and apply the \"Free Handed Villagers and Illagers\" resource pack. The resource pack can be downloaded from https://mcpedl.com/free-handed-viragers/",
+    "name": "Strengthened Villagers Addon v1.1.5",
+    "uuid": "8d0b7af4-2717-412e-8335-1d30ab06bf59",
     "version": [
       1,
       1,
-      4
+      5
     ],
     "min_engine_version": [
       1,
@@ -17,13 +17,13 @@
   },
   "modules": [
     {
-      "description": "Some strengthened villagers and wandering traders will spawn in the world. You can also strengthen them by giving them weapons.",
+      "description": "Some strengthened villagers and wandering traders will spawn in the world. You can also strengthen them by giving them weapons. To ensure this works correctly, you should install and apply the \"Free Handed Villagers and Illagers\" resource pack. The resource pack can be downloaded from https://mcpedl.com/free-handed-viragers/",
       "type": "data",
-      "uuid": "d16a9f65-7325-447d-b1e1-7e4809aeec35",
+      "uuid": "efcb7992-23d6-47ec-a71f-79ef9764b26d",
       "version": [
         1,
         1,
-        4
+        5
       ]
     }
   ]
