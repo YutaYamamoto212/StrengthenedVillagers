@@ -28,9 +28,7 @@
         }
       },
       "trade_resupply_component_group": {
-        "minecraft:trade_resupply": {
-
-        }
+        "minecraft:trade_resupply": {}
       },
       "become_witch": {
         "minecraft:transformation": {
@@ -645,24 +643,12 @@
         }
       },
       "job_specific_goals": {
-        "minecraft:behavior.inspect_bookshelf": {
-
-        },
-        "minecraft:behavior.harvest_farm_block": {
-
-        },
-        "minecraft:behavior.explore_outskirts": {
-
-        },
-        "minecraft:behavior.work": {
-
-        },
-        "minecraft:behavior.mingle": {
-
-        },
-        "minecraft:behavior.sleep": {
-
-        }
+        "minecraft:behavior.inspect_bookshelf": {},
+        "minecraft:behavior.harvest_farm_block": {},
+        "minecraft:behavior.explore_outskirts": {},
+        "minecraft:behavior.work": {},
+        "minecraft:behavior.mingle": {},
+        "minecraft:behavior.sleep": {}
       },
       "work_schedule_villager": {
         "minecraft:behavior.work": {
@@ -806,9 +792,7 @@
           "mingle_distance": 2
         }
       },
-      "home_schedule_villager": {
-
-      },
+      "home_schedule_villager": {},
       "bed_schedule_villager": {
         "minecraft:behavior.sleep": {
           "priority": 3,
@@ -920,9 +904,7 @@
         }
       },
       "trade_components": {
-        "minecraft:economy_trade_table": {
-
-        }
+        "minecraft:economy_trade_table": {}
       },
       "unskilled": {
         "minecraft:type_family": {
@@ -1429,13 +1411,11 @@
         }
       },
       "baby": {
-        "minecraft:is_baby": {
-
-        },
+        "minecraft:is_baby": {},
         "minecraft:scale": {
           "value": 1
         },
-		"minecraft:collision_box": {
+        "minecraft:collision_box": {
           "width": 0.3,
           "height": 0.95
         },
@@ -1538,7 +1518,7 @@
           "width": 0.6,
           "height": 1.9
         },
-		"minecraft:behavior.make_love": {
+        "minecraft:behavior.make_love": {
           "priority": 5
         },
         "minecraft:behavior.receive_love": {
@@ -1689,9 +1669,7 @@
         }
       },
       "unstrengthened": {
-        "minecraft:hide": {
-
-        },
+        "minecraft:hide": {},
         "minecraft:behavior.hide": {
           "priority": 0,
           "speed_multiplier": 0.8,
@@ -2051,9 +2029,9 @@
       "arrow_ranged_mode": {
         "minecraft:behavior.ranged_attack": {
           "priority": 4,
-          "attack_interval_min": 1.0,
-          "attack_interval_max": 1.0,
-          "attack_radius": 8.0
+          "attack_interval_min": 1,
+          "attack_interval_max": 1,
+          "attack_radius": 8
         },
         "minecraft:shooter": {
           "def": "minecraft:arrow"
@@ -2096,8 +2074,8 @@
           "table": "loot_tables/entities/villager_trident.json"
         },
         "minecraft:target_nearby_sensor": {
-          "inside_range": 3.0,
-          "outside_range": 5.0,
+          "inside_range": 3,
+          "outside_range": 5,
           "on_inside_range": {
             "event": "minecraft:trident_melee_mode",
             "target": "self"
@@ -2121,9 +2099,9 @@
         },
         "minecraft:behavior.ranged_attack": {
           "priority": 3,
-          "attack_interval_min": 1.0,
-          "attack_interval_max": 3.0,
-          "attack_radius": 10.0,
+          "attack_interval_min": 1,
+          "attack_interval_max": 3,
+          "attack_radius": 10,
           "swing": true
         }
       },
@@ -2553,8 +2531,8 @@
           "table": "loot_tables/entities/villager_trident.json"
         },
         "minecraft:target_nearby_sensor": {
-          "inside_range": 3.0,
-          "outside_range": 5.0,
+          "inside_range": 3,
+          "outside_range": 5,
           "on_inside_range": {
             "event": "minecraft:switch_to_melee",
             "target": "self"
@@ -4521,9 +4499,7 @@
           }
         ]
       },
-      "minecraft:is_hidden_when_invisible": {
-
-      },
+      "minecraft:is_hidden_when_invisible": {},
       "minecraft:type_family": {
         "family": [
           "villager",
@@ -4544,9 +4520,7 @@
       "minecraft:attack": {
         "damage": 2
       },
-      "minecraft:conditional_bandwidth_optimization": {
-
-      },
+      "minecraft:conditional_bandwidth_optimization": {},
       "minecraft:healable": {
         "items": [
           {
@@ -4801,9 +4775,7 @@
         "width": 0.6,
         "height": 1.9
       },
-      "minecraft:nameable": {
-
-      },
+      "minecraft:nameable": {},
       "minecraft:movement": {
         "value": 0.5
       },
@@ -4816,18 +4788,10 @@
       "minecraft:follow_range": {
         "value": 128
       },
-      "minecraft:annotation.open_door": {
-
-      },
-      "minecraft:movement.basic": {
-
-      },
-      "minecraft:jump.static": {
-
-      },
-      "minecraft:can_climb": {
-
-      },
+      "minecraft:annotation.open_door": {},
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
       "minecraft:inventory": {
         "inventory_size": 8,
         "private": true
@@ -4927,9 +4891,7 @@
           }
         ]
       },
-      "minecraft:persistent": {
-
-      },
+      "minecraft:persistent": {},
       "minecraft:behavior.float": {
         "priority": 0
       },
@@ -4979,9 +4941,7 @@
         "priority": 10,
         "speed_multiplier": 0.6
       },
-      "minecraft:physics": {
-
-      },
+      "minecraft:physics": {},
       "minecraft:pushable": {
         "is_pushable": true,
         "is_pushable_by_piston": true
@@ -5100,7 +5060,8 @@
                 "add": {
                   "component_groups": [
                     "baby",
-                    "child_schedule"
+                    "child_schedule",
+                    "unstrengthened"
                   ]
                 }
               },
@@ -5120,9 +5081,7 @@
                       },
                       {
                         "weight": 416667,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5134,9 +5093,7 @@
                       },
                       {
                         "weight": 208333,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5148,9 +5105,7 @@
                       },
                       {
                         "weight": 208333,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5162,9 +5117,7 @@
                       },
                       {
                         "weight": 13011,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5175,9 +5128,7 @@
                       },
                       {
                         "weight": 13011,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5188,9 +5139,7 @@
                       },
                       {
                         "weight": 13011,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5201,9 +5150,7 @@
                       },
                       {
                         "weight": 13011,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5214,9 +5161,7 @@
                       },
                       {
                         "weight": 13011,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5227,9 +5172,7 @@
                       },
                       {
                         "weight": 104085,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5240,9 +5183,7 @@
                       },
                       {
                         "weight": 104085,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5253,9 +5194,7 @@
                       },
                       {
                         "weight": 104085,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5266,9 +5205,7 @@
                       },
                       {
                         "weight": 104085,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5279,9 +5216,7 @@
                       },
                       {
                         "weight": 104085,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5292,9 +5227,7 @@
                       },
                       {
                         "weight": 208171,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5305,9 +5238,7 @@
                       },
                       {
                         "weight": 208171,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5318,9 +5249,7 @@
                       },
                       {
                         "weight": 208171,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5331,9 +5260,7 @@
                       },
                       {
                         "weight": 208171,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5344,9 +5271,7 @@
                       },
                       {
                         "weight": 208171,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5357,9 +5282,7 @@
                       },
                       {
                         "weight": 5204,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5370,9 +5293,7 @@
                       },
                       {
                         "weight": 5204,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5383,9 +5304,7 @@
                       },
                       {
                         "weight": 5204,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5396,9 +5315,7 @@
                       },
                       {
                         "weight": 5204,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5409,9 +5326,7 @@
                       },
                       {
                         "weight": 5204,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5422,9 +5337,7 @@
                       },
                       {
                         "weight": 2602,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5435,9 +5348,7 @@
                       },
                       {
                         "weight": 2602,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5448,9 +5359,7 @@
                       },
                       {
                         "weight": 2602,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5461,9 +5370,7 @@
                       },
                       {
                         "weight": 2602,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5474,9 +5381,7 @@
                       },
                       {
                         "weight": 2602,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5487,9 +5392,7 @@
                       },
                       {
                         "weight": 260,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5500,9 +5403,7 @@
                       },
                       {
                         "weight": 260,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5513,9 +5414,7 @@
                       },
                       {
                         "weight": 260,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5526,9 +5425,7 @@
                       },
                       {
                         "weight": 260,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5539,9 +5436,7 @@
                       },
                       {
                         "weight": 260,
-                        "remove": {
-
-                        },
+                        "remove": {},
                         "add": {
                           "component_groups": [
                             "adult",
@@ -5824,7 +5719,8 @@
                 "add": {
                   "component_groups": [
                     "baby",
-                    "child_schedule"
+                    "child_schedule",
+                    "unstrengthened"
                   ]
                 }
               },
@@ -5842,9 +5738,7 @@
                   },
                   {
                     "weight": 416667,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5856,9 +5750,7 @@
                   },
                   {
                     "weight": 208333,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5870,9 +5762,7 @@
                   },
                   {
                     "weight": 208333,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5884,9 +5774,7 @@
                   },
                   {
                     "weight": 13011,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5897,9 +5785,7 @@
                   },
                   {
                     "weight": 13011,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5910,9 +5796,7 @@
                   },
                   {
                     "weight": 13011,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5923,9 +5807,7 @@
                   },
                   {
                     "weight": 13011,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5936,9 +5818,7 @@
                   },
                   {
                     "weight": 13011,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5949,9 +5829,7 @@
                   },
                   {
                     "weight": 104085,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5962,9 +5840,7 @@
                   },
                   {
                     "weight": 104085,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5975,9 +5851,7 @@
                   },
                   {
                     "weight": 104085,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -5988,9 +5862,7 @@
                   },
                   {
                     "weight": 104085,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6001,9 +5873,7 @@
                   },
                   {
                     "weight": 104085,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6014,9 +5884,7 @@
                   },
                   {
                     "weight": 208171,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6027,9 +5895,7 @@
                   },
                   {
                     "weight": 208171,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6040,9 +5906,7 @@
                   },
                   {
                     "weight": 208171,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6053,9 +5917,7 @@
                   },
                   {
                     "weight": 208171,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6066,9 +5928,7 @@
                   },
                   {
                     "weight": 208171,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6079,9 +5939,7 @@
                   },
                   {
                     "weight": 5204,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6092,9 +5950,7 @@
                   },
                   {
                     "weight": 5204,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6105,9 +5961,7 @@
                   },
                   {
                     "weight": 5204,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6118,9 +5972,7 @@
                   },
                   {
                     "weight": 5204,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6131,9 +5983,7 @@
                   },
                   {
                     "weight": 5204,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6144,9 +5994,7 @@
                   },
                   {
                     "weight": 2602,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6157,9 +6005,7 @@
                   },
                   {
                     "weight": 2602,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6170,9 +6016,7 @@
                   },
                   {
                     "weight": 2602,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6183,9 +6027,7 @@
                   },
                   {
                     "weight": 2602,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6196,9 +6038,7 @@
                   },
                   {
                     "weight": 2602,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6209,9 +6049,7 @@
                   },
                   {
                     "weight": 260,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6222,9 +6060,7 @@
                   },
                   {
                     "weight": 260,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6235,9 +6071,7 @@
                   },
                   {
                     "weight": 260,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6248,9 +6082,7 @@
                   },
                   {
                     "weight": 260,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6261,9 +6093,7 @@
                   },
                   {
                     "weight": 260,
-                    "remove": {
-
-                    },
+                    "remove": {},
                     "add": {
                       "component_groups": [
                         "adult",
@@ -6481,7 +6311,8 @@
             "add": {
               "component_groups": [
                 "baby",
-                "child_schedule"
+                "child_schedule",
+                "unstrengthened"
               ]
             }
           },
@@ -7075,7 +6906,8 @@
               "component_groups": [
                 "baby",
                 "unskilled",
-                "child_schedule"
+                "child_schedule",
+                "unstrengthened"
               ]
             }
           },
@@ -15614,8 +15446,7 @@
                 "adult",
                 "nitwit",
                 "behavior_peasant",
-                "jobless_schedule",
-                "unstrengthened"
+                "jobless_schedule"
               ]
             }
           },
@@ -15632,8 +15463,7 @@
                 "adult",
                 "unskilled",
                 "behavior_peasant",
-                "basic_schedule",
-                "unstrengthened"
+                "basic_schedule"
               ]
             }
           }

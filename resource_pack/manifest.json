@@ -2,12 +2,12 @@
   "format_version": 2,
   "header": {
     "description": "Makes the \"Strengthen\" button localized and adds the sound of repairing iron golems.",
-    "name": "Strengthened Villagers Resources v1.1.5",
-    "uuid": "2827c8bf-22a4-4f91-b087-938671a995c3",
+    "name": "Strengthened Villagers Resources v1.1.6",
+    "uuid": "0281116a-bef0-4d43-8ae8-7031c688622d",
     "version": [
       1,
       1,
-      5
+      6
     ],
     "min_engine_version": [
       1,
@@ -19,11 +19,11 @@
     {
       "description": "Makes the \"Strengthen\" button localized and adds the sound of repairing iron golems.",
       "type": "resources",
-      "uuid": "0eb3bdbc-9bdb-481c-8aeb-b4ba312733de",
+      "uuid": "0c1ea451-6249-4170-ab64-23fe87dcf87c",
       "version": [
         1,
         1,
-        5
+        6
       ]
     }
   ]
