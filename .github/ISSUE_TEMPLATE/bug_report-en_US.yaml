@@ -56,6 +56,7 @@ body:
       label: What is the game version you are playing?
       description: (If the version you are using is not listed here, the version you are using is not supported. Please use the supported version and try to reproduce the bug again.)
       options:
+        - 1.19.60
         - 1.19.50
         - 1.19.41
         - 1.19.40
