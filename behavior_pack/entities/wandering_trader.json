@@ -299,20 +299,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -321,7 +311,7 @@
               "use_item": true,
               "interact_text": "action.interact.strengthen"
             },
-			{
+            {
               "on_interact": {
                 "filters": {
                   "all_of": [
@@ -337,20 +327,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -359,7 +339,7 @@
               "use_item": true,
               "interact_text": "action.interact.strengthen"
             },
-			{
+            {
               "on_interact": {
                 "filters": {
                   "all_of": [
@@ -375,20 +355,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -397,7 +367,7 @@
               "use_item": true,
               "interact_text": "action.interact.strengthen"
             },
-			{
+            {
               "on_interact": {
                 "filters": {
                   "all_of": [
@@ -413,20 +383,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -451,20 +411,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -489,20 +439,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -527,20 +467,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -565,20 +495,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -603,20 +523,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -641,20 +551,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -679,20 +579,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -717,20 +607,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -755,20 +635,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -793,20 +663,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -831,20 +691,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -869,20 +719,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -907,20 +747,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -945,20 +775,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -983,20 +803,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -1021,20 +831,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -1059,20 +859,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -1097,20 +887,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -1135,20 +915,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -1173,20 +943,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -1211,20 +971,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -1249,20 +999,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -1287,20 +1027,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -1325,20 +1055,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -1363,20 +1083,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -1401,20 +1111,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -1439,20 +1139,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -1477,20 +1167,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -1515,20 +1195,10 @@
                       "value": "player"
                     },
                     {
-                      "any_of": [
-                        {
-                          "test": "is_sneaking",
-                          "subject": "other",
-                          "operator": "==",
-                          "value": true
-                        },
-                        {
-                          "test": "has_ability",
-                          "subject": "other",
-                          "operator": "equals",
-                          "value": "instabuild"
-                        }
-                      ]
+                      "test": "has_component",
+                      "subject": "self",
+                      "operator": "!=",
+                      "value": "minecraft:equipment"
                     }
                   ]
                 },
@@ -1877,12 +1547,12 @@
           }
         }
       },
-	  "bow": {
+      "bow": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_bow.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_bow.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_bow.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_bow.json"
         },
         "minecraft:behavior.charge_held_item": {
           "priority": 3,
@@ -1893,10 +1563,10 @@
       },
       "crossbow": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_crossbow.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_crossbow.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_crossbow.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_crossbow.json"
         },
         "minecraft:behavior.charge_held_item": {
           "priority": 3,
@@ -1908,9 +1578,9 @@
       "arrow_ranged_mode": {
         "minecraft:behavior.ranged_attack": {
           "priority": 4,
-          "attack_interval_min": 1.0,
-          "attack_interval_max": 1.0,
-          "attack_radius": 8.0
+          "attack_interval_min": 1,
+          "attack_interval_max": 1,
+          "attack_radius": 8
         },
         "minecraft:shooter": {
           "def": "minecraft:arrow"
@@ -1947,14 +1617,14 @@
       },
       "trident": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_trident.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_trident.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_trident.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_trident.json"
         },
         "minecraft:target_nearby_sensor": {
-          "inside_range": 3.0,
-          "outside_range": 5.0,
+          "inside_range": 3,
+          "outside_range": 5,
           "on_inside_range": {
             "event": "minecraft:trident_melee_mode",
             "target": "self"
@@ -1978,18 +1648,18 @@
         },
         "minecraft:behavior.ranged_attack": {
           "priority": 3,
-          "attack_interval_min": 1.0,
-          "attack_interval_max": 3.0,
-          "attack_radius": 10.0,
+          "attack_interval_min": 1,
+          "attack_interval_max": 3,
+          "attack_radius": 10,
           "swing": true
         }
       },
       "wooden_sword": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_wooden_sword.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_wooden_sword.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_wooden_sword.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_wooden_sword.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -1999,10 +1669,10 @@
       },
       "stone_sword": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_stone_sword.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_stone_sword.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_stone_sword.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_stone_sword.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2012,10 +1682,10 @@
       },
       "iron_sword": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_iron_sword.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_iron_sword.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_iron_sword.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_iron_sword.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2025,10 +1695,10 @@
       },
       "golden_sword": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_golden_sword.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_golden_sword.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_golden_sword.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_golden_sword.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2038,10 +1708,10 @@
       },
       "diamond_sword": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_diamond_sword.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_diamond_sword.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_diamond_sword.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_diamond_sword.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2051,10 +1721,10 @@
       },
       "netherite_sword": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_netherite_sword.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_netherite_sword.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_netherite_sword.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_netherite_sword.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2064,10 +1734,10 @@
       },
       "wooden_axe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_wooden_axe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_wooden_axe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_wooden_axe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_wooden_axe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2077,10 +1747,10 @@
       },
       "stone_axe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_stone_axe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_stone_axe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_stone_axe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_stone_axe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2090,10 +1760,10 @@
       },
       "iron_axe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_iron_axe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_iron_axe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_iron_axe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_iron_axe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2103,10 +1773,10 @@
       },
       "golden_axe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_golden_axe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_golden_axe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_golden_axe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_golden_axe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2116,10 +1786,10 @@
       },
       "diamond_axe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_diamond_axe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_diamond_axe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_diamond_axe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_diamond_axe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2129,10 +1799,10 @@
       },
       "netherite_axe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_netherite_axe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_netherite_axe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_netherite_axe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_netherite_axe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2142,10 +1812,10 @@
       },
       "wooden_pickaxe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_wooden_pickaxe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_wooden_pickaxe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_wooden_pickaxe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_wooden_pickaxe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2155,10 +1825,10 @@
       },
       "stone_pickaxe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_stone_pickaxe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_stone_pickaxe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_stone_pickaxe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_stone_pickaxe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2168,10 +1838,10 @@
       },
       "iron_pickaxe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_iron_pickaxe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_iron_pickaxe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_iron_pickaxe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_iron_pickaxe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2181,10 +1851,10 @@
       },
       "golden_pickaxe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_golden_pickaxe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_golden_pickaxe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_golden_pickaxe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_golden_pickaxe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2194,10 +1864,10 @@
       },
       "diamond_pickaxe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_diamond_pickaxe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_diamond_pickaxe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_diamond_pickaxe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_diamond_pickaxe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2207,10 +1877,10 @@
       },
       "netherite_pickaxe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_netherite_pickaxe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_netherite_pickaxe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_netherite_pickaxe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_netherite_pickaxe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2220,10 +1890,10 @@
       },
       "wooden_shovel": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_wooden_shovel.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_wooden_shovel.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_wooden_shovel.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_wooden_shovel.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2233,10 +1903,10 @@
       },
       "stone_shovel": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_stone_shovel.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_stone_shovel.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_stone_shovel.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_stone_shovel.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2246,10 +1916,10 @@
       },
       "iron_shovel": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_iron_shovel.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_iron_shovel.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_iron_shovel.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_iron_shovel.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2259,10 +1929,10 @@
       },
       "golden_shovel": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_golden_shovel.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_golden_shovel.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_golden_shovel.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_golden_shovel.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2272,10 +1942,10 @@
       },
       "diamond_shovel": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_diamond_shovel.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_diamond_shovel.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_diamond_shovel.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_diamond_shovel.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2285,10 +1955,10 @@
       },
       "netherite_shovel": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_netherite_shovel.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_netherite_shovel.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_netherite_shovel.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_netherite_shovel.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2298,10 +1968,10 @@
       },
       "wooden_hoe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_wooden_hoe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_wooden_hoe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_wooden_hoe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_wooden_hoe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2311,10 +1981,10 @@
       },
       "stone_hoe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_stone_hoe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_stone_hoe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_stone_hoe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_stone_hoe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2324,10 +1994,10 @@
       },
       "iron_hoe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_iron_hoe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_iron_hoe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_iron_hoe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_iron_hoe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2337,10 +2007,10 @@
       },
       "golden_hoe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_golden_hoe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_golden_hoe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_golden_hoe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_golden_hoe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2350,10 +2020,10 @@
       },
       "diamond_hoe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_diamond_hoe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_diamond_hoe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_diamond_hoe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_diamond_hoe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2363,10 +2033,10 @@
       },
       "netherite_hoe": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_netherite_hoe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_netherite_hoe.json"
         },
         "minecraft:loot": {
-          "table": "loot_tables/entities/villager_netherite_hoe.json"
+          "table": "loot_tables/entities/strengthened_by_players/villager_netherite_hoe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2374,12 +2044,9 @@
           "track_target": false
         }
       },
-	  "bow_on_spawn": {
+      "bow_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_bow.json"
-        },
-        "minecraft:loot": {
-          "table": "loot_tables/entities/villager_bow.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_bow.json"
         },
         "minecraft:behavior.charge_held_item": {
           "priority": 3,
@@ -2390,10 +2057,7 @@
       },
       "crossbow_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_crossbow.json"
-        },
-        "minecraft:loot": {
-          "table": "loot_tables/entities/villager_crossbow.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_crossbow.json"
         },
         "minecraft:behavior.charge_held_item": {
           "priority": 3,
@@ -2404,14 +2068,11 @@
       },
       "trident_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_trident.json"
-        },
-        "minecraft:loot": {
-          "table": "loot_tables/entities/villager_trident.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_trident.json"
         },
         "minecraft:target_nearby_sensor": {
-          "inside_range": 3.0,
-          "outside_range": 5.0,
+          "inside_range": 3,
+          "outside_range": 5,
           "on_inside_range": {
             "event": "minecraft:switch_to_melee",
             "target": "self"
@@ -2424,7 +2085,7 @@
       },
       "wooden_sword_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_wooden_sword.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_wooden_sword.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2434,7 +2095,7 @@
       },
       "stone_sword_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_stone_sword.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_stone_sword.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2444,7 +2105,7 @@
       },
       "iron_sword_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_iron_sword.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_iron_sword.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2454,7 +2115,7 @@
       },
       "golden_sword_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_golden_sword.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_golden_sword.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2464,7 +2125,7 @@
       },
       "diamond_sword_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_diamond_sword.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_diamond_sword.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2474,7 +2135,7 @@
       },
       "netherite_sword_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_netherite_sword.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_netherite_sword.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2484,7 +2145,7 @@
       },
       "wooden_axe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_wooden_axe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_wooden_axe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2494,7 +2155,7 @@
       },
       "stone_axe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_stone_axe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_stone_axe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2504,7 +2165,7 @@
       },
       "iron_axe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_iron_axe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_iron_axe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2514,7 +2175,7 @@
       },
       "golden_axe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_golden_axe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_golden_axe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2524,7 +2185,7 @@
       },
       "diamond_axe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_diamond_axe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_diamond_axe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2534,7 +2195,7 @@
       },
       "netherite_axe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_netherite_axe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_netherite_axe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2544,7 +2205,7 @@
       },
       "wooden_pickaxe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_wooden_pickaxe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_wooden_pickaxe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2554,7 +2215,7 @@
       },
       "stone_pickaxe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_stone_pickaxe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_stone_pickaxe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2564,7 +2225,7 @@
       },
       "iron_pickaxe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_iron_pickaxe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_iron_pickaxe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2574,7 +2235,7 @@
       },
       "golden_pickaxe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_golden_pickaxe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_golden_pickaxe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2584,7 +2245,7 @@
       },
       "diamond_pickaxe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_diamond_pickaxe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_diamond_pickaxe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2594,7 +2255,7 @@
       },
       "netherite_pickaxe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_netherite_pickaxe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_netherite_pickaxe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2604,7 +2265,7 @@
       },
       "wooden_shovel_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_wooden_shovel.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_wooden_shovel.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2614,7 +2275,7 @@
       },
       "stone_shovel_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_stone_shovel.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_stone_shovel.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2624,7 +2285,7 @@
       },
       "iron_shovel_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_iron_shovel.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_iron_shovel.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2634,7 +2295,7 @@
       },
       "golden_shovel_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_golden_shovel.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_golden_shovel.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2644,7 +2305,7 @@
       },
       "diamond_shovel_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_diamond_shovel.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_diamond_shovel.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2654,7 +2315,7 @@
       },
       "netherite_shovel_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_netherite_shovel.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_netherite_shovel.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2664,7 +2325,7 @@
       },
       "wooden_hoe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_wooden_hoe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_wooden_hoe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2674,7 +2335,7 @@
       },
       "stone_hoe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_stone_hoe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_stone_hoe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2684,7 +2345,7 @@
       },
       "iron_hoe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_iron_hoe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_iron_hoe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2694,7 +2355,7 @@
       },
       "golden_hoe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_golden_hoe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_golden_hoe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2704,7 +2365,7 @@
       },
       "diamond_hoe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_diamond_hoe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_diamond_hoe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2714,7 +2375,7 @@
       },
       "netherite_hoe_on_spawn": {
         "minecraft:equipment": {
-          "table": "loot_tables/entities/villager_netherite_hoe.json"
+          "table": "loot_tables/entities/naturally_spawned/villager_netherite_hoe.json"
         },
         "minecraft:behavior.melee_attack": {
           "priority": 3,
@@ -2737,7 +2398,7 @@
           {
             "min_wait_time": 0,
             "max_wait_time": 0,
-            "spawn_entity": "llama", // For compatibility with older versions, the spawned entity is still minecraft:llama.
+            "spawn_entity": "llama",
             "spawn_event": "minecraft:from_wandering_trader",
             "single_use": true,
             "num_to_spawn": 2,
@@ -3082,36 +2743,36 @@
               ]
             }
           },
-		  {
+          {
             "weight": 416667,
             "remove": {},
             "add": {
               "component_groups": [
                 "strengthened_on_spawn",
                 "bow_on_spawn",
-				"arrow_ranged_mode"
+                "arrow_ranged_mode"
               ]
             }
           },
-		  {
+          {
             "weight": 208333,
             "remove": {},
             "add": {
               "component_groups": [
                 "strengthened_on_spawn",
                 "crossbow_on_spawn",
-				"arrow_ranged_mode"
+                "arrow_ranged_mode"
               ]
             }
           },
-		  {
+          {
             "weight": 208333,
             "remove": {},
             "add": {
               "component_groups": [
                 "strengthened_on_spawn",
                 "trident_on_spawn",
-				"trident_melee_mode"
+                "trident_melee_mode"
               ]
             }
           },
@@ -3835,7 +3496,7 @@
           ]
         }
       },
-	  "bow": {
+      "bow": {
         "remove": {
           "component_groups": [
             "unstrengthened"

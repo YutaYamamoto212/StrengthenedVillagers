@@ -45,9 +45,9 @@ body:
     id: version
     attributes:
       label: Strengthened Villager Version
-      description: What version of Strengthened Villager are you currently using? (e.g. 1.1.6, found from the version number indicated in the title of the add-on. If the version you are using is not listed here, the version you are using is out of date. Please update to the latest version and try to reproduce the bug again.)
+      description: What version of Strengthened Villager are you currently using? (e.g. 1.1.7, found from the version number indicated in the title of the add-on. If the version you are using is not listed here, the version you are using is out of date. Please update to the latest version and try to reproduce the bug again.)
       options:
-        - 1.1.6
+        - 1.1.7
     validations:
       required: true
   - type: input
